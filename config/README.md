@@ -1,4 +1,4 @@
-# Project Sphynx - Config
+# Hanga - Config
 
 Configuration is housed here for various utility tools such as:
 
