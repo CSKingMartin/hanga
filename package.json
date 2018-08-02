@@ -1,0 +1,11 @@
+{
+  "name": "project-sphynx",
+  "version": "0.1.0",
+  "description": "A new build system designed to inherit the same use-cases of Fuzzy Chainsaw.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CSKingMartin (Conner Wells)",
+  "license": "ISC"
+}
