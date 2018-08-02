@@ -1,4 +1,4 @@
-# Project Sphynx
+# Hanga
 
 Codename for the inheritor of fuzzy-chainsaw.
 

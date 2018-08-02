@@ -1,4 +1,4 @@
-# Project Sphynx - Elements
+# Hanga - Elements
 
 Elements are the React components of the design system. They act as building blocks the construct full pages. 
 
