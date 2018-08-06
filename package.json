@@ -1,0 +1,20 @@
+{
+  "name": "hanga",
+  "version": "0.1.0",
+  "description": "Tools for creating a interactive catalog of components",
+  "repository": "git@github.com:CSKingMartin/hanga.git",
+  "authors": [
+    "Evan Krambuhl <thekrambuhl@gmail.com>",
+    "Conner Wells <conner.c.wells@gmail.com>"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-standard": "^11.0.0",
+    "eslint-config-standard-react": "^6.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "lerna": "^2.5.1"
+  }
+}
