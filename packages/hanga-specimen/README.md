@@ -1,7 +1,8 @@
 # hanga-specimen
 
 ```jsx
-import { Specimen, Editor, EditorContext } from 'hanga'
+import { Specimen } from 'hanga'
+import { Editor, EditorContext } from 'hanga-editor'
 import MyCustomColorEditor from './MyCustomColorEditor'
 import Button from './Button'
 
@@ -28,12 +29,12 @@ import Button from './Button'
     </>}
   >
     {
-      ({ isDisabled, size, fill, content }) =>
+      ({ isDisabled, size, fill, content, setContextState }) =>
         <Button
           isDisabled={isDisabled}
           size={size}
           fill={fill}
-          onClick={ev => updateValue({ size: 'small' })}
+          onClick={() => setContextState({ size: 'small' })}
         >
           {content}
         </Button>

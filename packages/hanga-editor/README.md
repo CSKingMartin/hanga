@@ -41,17 +41,17 @@ import Button from './Button'
   {/* Update context state property */}
   <EditorContext.Consumer>
     {
-      ({ setEditorState }) =>
+      ({ setContextState }) =>
         <p>
-          <button onClick={() => setEditorState('size', 'small')}>small</button>
-          <button onClick={() => setEditorState('size', 'medium')}>medium</button>
+          <button onClick={() => setContextState({ size: 'small' })}>Small</button>
+          <button onClick={() => setContextState({ size: 'medium' })}>Medium</button>
         </p>
     }
   </EditorContext.Consumer>
 
   {/* Editors implement EditorContext.Consumer */}
   <Editor.Select
-    name="size" {/* setEditorState('size', value) under the hood */}
+    name="size" {/* does setContextState({ size: value }) under the hood */}
     label="Size"
     defaultValue={'medium'}
     options={['small', 'medium', 'large']}
