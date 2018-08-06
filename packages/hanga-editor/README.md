@@ -51,7 +51,7 @@ import Button from './Button'
 
   {/* Editors implement EditorContext.Consumer */}
   <Editor.Select
-    name="size"
+    name="size" {/* setEditorState('size', value) under the hood */}
     label="Size"
     defaultValue={'medium'}
     options={['small', 'medium', 'large']}
