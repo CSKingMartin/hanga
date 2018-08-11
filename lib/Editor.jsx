@@ -1,5 +1,5 @@
 import React from 'react'
-import EditorContext from './EditorContext'
+import StatefulContext from 'react-stateful-context'
 
 export const EditorWrapper = ({
   name,
@@ -23,7 +23,7 @@ export const Select = ({
   onChange = () => {},
   ...rest
 }) => (
-  <EditorContext.Consumer>
+  <StatefulContext.Consumer>
     { context =>
       <EditorWrapper name={name} label={label} {...rest}>
         <select
@@ -50,7 +50,7 @@ export const Select = ({
         </select>
       </EditorWrapper>
     }
-  </EditorContext.Consumer>
+  </StatefulContext.Consumer>
 )
 
 export const Toggle = ({
@@ -60,7 +60,7 @@ export const Toggle = ({
   onChange = () => {},
   ...rest
 }) => (
-  <EditorContext.Consumer>
+  <StatefulContext.Consumer>
     { context =>
       <EditorWrapper name={name} label={label} {...rest}>
         <div>
@@ -79,7 +79,7 @@ export const Toggle = ({
         </div>
       </EditorWrapper>
     }
-  </EditorContext.Consumer>
+  </StatefulContext.Consumer>
 )
 
 export const Text = ({
@@ -89,7 +89,7 @@ export const Text = ({
   onChange = () => {},
   ...rest
 }) => (
-  <EditorContext.Consumer>
+  <StatefulContext.Consumer>
     { context =>
       <EditorWrapper name={name} label={label} {...rest}>
         <input
@@ -105,7 +105,7 @@ export const Text = ({
         />
       </EditorWrapper>
     }
-  </EditorContext.Consumer>
+  </StatefulContext.Consumer>
 )
 
 export default {
