@@ -1,20 +1,32 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import StatefulContext from 'react-stateful-context'
 
+// Editor Wrapper
 export const EditorWrapper = ({
-  name,
   label,
+  name,
   children,
   ...rest
-}) => {
-  return (
-    <fieldset {...rest}>
-      <label for={name}>{label ? label : name}</label>
-      <div>{children}</div>
-    </fieldset>
-  )
+}) => (
+  <StatefulContext.Consumer>
+    {
+      context =>
+        <fieldset {...rest}>
+          <label htmlFor={name}>{label || name}</label>
+          <div>{children(context)}</div>
+        </fieldset>
+    }
+  </StatefulContext.Consumer>
+)
+
+EditorWrapper.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  children: PropTypes.func.isRequired
 }
 
+// Select Editor
 export const Select = ({
   name,
   label,
@@ -23,9 +35,9 @@ export const Select = ({
   onChange = () => {},
   ...rest
 }) => (
-  <StatefulContext.Consumer>
-    { context =>
-      <EditorWrapper name={name} label={label} {...rest}>
+  <EditorWrapper name={name} label={label} {...rest}>
+    {
+      context =>
         <select
           id={name}
           name={name}
@@ -48,11 +60,27 @@ export const Select = ({
               ))
           }
         </select>
-      </EditorWrapper>
     }
-  </StatefulContext.Consumer>
+  </EditorWrapper>
 )
 
+Select.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  defaultValue: PropTypes.string,
+  options: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.shape({
+        value: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired
+      })
+    ])
+  ),
+  onChange: PropTypes.func
+}
+
+// Toggle Editor
 export const Toggle = ({
   name,
   label,
@@ -60,28 +88,34 @@ export const Toggle = ({
   onChange = () => {},
   ...rest
 }) => (
-  <StatefulContext.Consumer>
+  <EditorWrapper name={name} label={label} {...rest}>
     { context =>
-      <EditorWrapper name={name} label={label} {...rest}>
-        <div>
-          <input
-            type="checkbox"
-            id={name}
-            name={name}
-            checked={context[name]}
-            defaultChecked={defaultValue}
-            onChange={ev => {
-              context.setContextState({ [name]: ev.target.checked })
-              onChange(ev)
-            }}
-          />
-          <label for={name}>{label ? label : name}</label>
-        </div>
-      </EditorWrapper>
+      <div>
+        <input
+          type="checkbox"
+          id={name}
+          name={name}
+          checked={context[name]}
+          defaultChecked={defaultValue}
+          onChange={ev => {
+            context.setContextState({ [name]: ev.target.checked })
+            onChange(ev)
+          }}
+        />
+        <label for={name}>{label ? label : name}</label>
+      </div>
     }
-  </StatefulContext.Consumer>
+  </EditorWrapper>
 )
 
+Toggle.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  defaultValue: PropTypes.bool,
+  onChange: PropTypes.func
+}
+
+// Text Editor
 export const Text = ({
   name,
   label,
@@ -89,25 +123,31 @@ export const Text = ({
   onChange = () => {},
   ...rest
 }) => (
-  <StatefulContext.Consumer>
+  <EditorWrapper name={name} label={label} {...rest}>
     { context =>
-      <EditorWrapper name={name} label={label} {...rest}>
-        <input
-          type="text"
-          id={name}
-          name={name}
-          value={context[name]}
-          defaultValue={defaultValue}
-          onChange={ev => {
-            context.setContextState({ [name]: ev.target.value })
-            onChange(ev)
-          }}
-        />
-      </EditorWrapper>
+      <input
+        type="text"
+        id={name}
+        name={name}
+        value={context[name]}
+        defaultValue={defaultValue}
+        onChange={ev => {
+          context.setContextState({ [name]: ev.target.value })
+          onChange(ev)
+        }}
+      />
     }
-  </StatefulContext.Consumer>
+  </EditorWrapper>
 )
 
+Text.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  defaultValue: PropTypes.string,
+  onChange: PropTypes.func
+}
+
+// export these suckers
 export default {
   Select,
   Toggle,
