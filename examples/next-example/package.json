@@ -13,5 +13,8 @@
     "next": "^6.1.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^3.1.1"
   }
 }
