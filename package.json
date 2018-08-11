@@ -15,12 +15,14 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "start": "rollup -c -w",
-    "prepublish": "npm run build"
+    "dev": "rollup -c -w",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^16.4.2"
   },
   "dependencies": {
-    "react": "^16.4.2",
-    "react-stateful-context": "^1.0.0"
+    "react-stateful-context": "^1.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
