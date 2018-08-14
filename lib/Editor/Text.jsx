@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import StatefulContext from 'react-stateful-context'
 import EditorWrapper from './EditorWrapper'
-import ContextConsumer from './ContextConsumer'
 
 // Text Editor
 class TextEditor extends React.Component {
@@ -32,7 +32,7 @@ class TextEditor extends React.Component {
   handleChange (ev) {
     const { name, context, onChange } = this.props
     context.setContextState({ [name]: ev.target.value })
-    onChange({ [name]: ev.target.value })
+    if (onChange) onChange({ [name]: ev.target.value })
   }
 
   render () {
@@ -71,7 +71,9 @@ TextEditor.defaultProps = {
 }
 
 export default ({ ...args }) =>
-  <ContextConsumer
-    Component={TextEditor}
-    {...args}
-  />
+  <StatefulContext.Consumer>
+    {
+      context =>
+        <TextEditor context={context} {...args} />
+    }
+  </StatefulContext.Consumer>

@@ -1,13 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import StatefulContext from 'react-stateful-context'
 import EditorWrapper from './EditorWrapper'
 
 // Select Editor
-
-export default class Select extends React.Component {
+class SelectEditor extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { value: props.defaultValue }
+    this.state = {
+      value: props.context[props.name] || props.defaultValue
+    }
+
+    this.handleObservableChange = this.handleObservableChange.bind(this)
+  }
+
+  componentWillMount () {
+    const { name, context } = this.props
+    context.startObservingState(name, this.handleObservableChange)
+  }
+
+  componentWillUnmount () {
+    const { name, context } = this.props
+    context.stopObservingState(name, this.handleObservableChange)
+  }
+
+  handleObservableChange () {
+    const { name, context } = this.props
+    this.setState({ value: context[name] })
+  }
+
+  handleChange (ev) {
+    const { name, context, onChange } = this.props
+    context.setContextState({ [name]: ev.target.value })
+    if (onChange) onChange({ [name]: ev.target.value })
   }
 
   render () {
@@ -16,43 +41,40 @@ export default class Select extends React.Component {
       label,
       defaultValue,
       options = [],
-      onChange = () => {},
       ...rest
     } = this.props
 
     return (
       <EditorWrapper name={name} label={label} defaultValue={defaultValue} {...rest}>
-        {
-          context =>
-            <select
-              id={name}
-              name={name}
-              value={this.state.value}
-              onChange={ev => {
-                this.setState({ value: ev.target.value })
-                context.setContextState({ [name]: ev.target.value })
-                onChange(ev)
-              }}
-            >
-              {
-                options
-                  .map(value => (
-                    typeof value === 'object'
-                      ? value
-                      : { value, text: value }
-                  ))
-                  .map(opt => (
-                    <option value={opt.value}>{opt.text}</option>
-                  ))
-              }
-            </select>
-        }
+        <select
+          id={name}
+          name={name}
+          value={this.state.value}
+          onChange={ev => this.handleChange(ev)}
+        >
+          {
+            options
+              .map(value => (
+                typeof value === 'object'
+                  ? value
+                  : { value, text: value }
+              ))
+              .map(opt => (
+                <option
+                  key={opt.value}
+                  value={opt.value}
+                >
+                  {opt.text}
+                </option>
+              ))
+          }
+        </select>
       </EditorWrapper>
     )
   }
 }
 
-Select.propTypes = {
+SelectEditor.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   defaultValue: PropTypes.string,
@@ -67,3 +89,11 @@ Select.propTypes = {
   ),
   onChange: PropTypes.func
 }
+
+export default ({ ...args }) =>
+  <StatefulContext.Consumer>
+    {
+      context =>
+        <SelectEditor context={context} {...args} />
+    }
+  </StatefulContext.Consumer>

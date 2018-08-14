@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ContextConsumer from './ContextConsumer'
+import StatefulContext from 'react-stateful-context'
 
 // Editor Wrapper
 class EditorWrapper extends React.Component {
@@ -44,8 +44,12 @@ EditorWrapper.propTypes = {
   context: PropTypes.object
 }
 
-export default ({ ...args }) =>
-  <ContextConsumer
-    Component={EditorWrapper}
-    {...args}
-  />
+export default ({ children, ...rest }) =>
+  <StatefulContext.Consumer>
+    {
+      context =>
+        <EditorWrapper context={context} {...rest}>
+          {children}
+        </EditorWrapper>
+    }
+  </StatefulContext.Consumer>
