@@ -11,11 +11,17 @@ export default () =>
         ({ someText }) =>
           <React.Fragment>
             <Editor.Text
+              label="Output Text"
               name="someText"
               defaultValue="Here is some text"
             />
 
-            {someText}
+            <Editor.Text
+              label="Output Text (2nd)"
+              name="someText"
+            />
+
+            Output Text: "{someText}"
           </React.Fragment>
       }
     </StatefulContext.Consumer>
