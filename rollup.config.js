@@ -28,9 +28,5 @@ export default {
       extensions: ['.js', '.jsx']
     }),
     commonjs()
-  ],
-  external: [
-    'react',
-    'react-stateful-context'
   ]
 }
