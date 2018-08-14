@@ -97,7 +97,7 @@ export default () =>
             <Editor.Select
               name="mutliColor"
               label="Color"
-              defaultValue={'blue'}
+              defaultValue={'green'}
               options={['red', 'blue', 'green']}
             />
             <Editor.Select
