@@ -3,5 +3,8 @@
     ["env", { "modules": false }],
     "react"
   ],
-  "plugins": ["transform-object-rest-spread"]
+  "plugins": [
+    "external-helpers",
+    "transform-object-rest-spread"
+  ]
 }
