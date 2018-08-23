@@ -3,6 +3,11 @@
     "standard",
     "standard-react"
   ],
+  "settings": {
+    "react": {
+      "version": "16.4"
+    }
+  },
   "rules": {
     "jsx-quotes": [1, "prefer-double"]
   }
