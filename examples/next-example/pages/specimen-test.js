@@ -7,7 +7,7 @@ import {
 
 export default () =>
   <StatefulContext.Provider>
-    <h1>Speciment Test</h1>
+    <h1>Specimen Test</h1>
 
     <h2>Static Specimen</h2>
 
