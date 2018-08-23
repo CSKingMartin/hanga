@@ -100,7 +100,6 @@ export default ({ ...args }) =>
     }
   </StatefulContext.Consumer>
 
-
 // helpers
 
 function getChangeIndex (a, b) {

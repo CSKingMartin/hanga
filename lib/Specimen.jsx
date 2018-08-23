@@ -1,6 +1,14 @@
 import React from 'react'
-export default ({
+import PropTypes from 'prop-types'
+
+const Specimen = ({
   children
 }) => (
-  <div>{children}</div>
+  <div />
 )
+
+Specimen.propTypes = {
+  children: PropTypes.any
+}
+
+export default Specimen

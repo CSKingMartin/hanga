@@ -21,7 +21,7 @@ export default () =>
 
             <p>
               <button disabled={isDisabled}>
-                This button is{!isDisabled || ' not'} enabled
+                This button is {isDisabled ? 'disabled' : 'enabled'}
               </button>
             </p>
           </React.Fragment>
@@ -81,7 +81,7 @@ export default () =>
 
             <p>
               <button disabled={multiIsDisabled}>
-                This button is{!multiIsDisabled || ' not'} enabled
+                This button is {multiIsDisabled ? 'disabled' : 'enabled'}
               </button>
             </p>
           </React.Fragment>
