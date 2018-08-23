@@ -11,10 +11,12 @@ class TextEditor extends React.Component {
       value: props.context[props.name] || props.defaultValue
     }
 
+    this.$input = React.createRef()
     this.handleObservableChange = this.handleObservableChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  componentWillMount () {
+  componentDidMount () {
     const { name, context } = this.props
     context.startObservingState(name, this.handleObservableChange)
   }
@@ -22,6 +24,23 @@ class TextEditor extends React.Component {
   componentWillUnmount () {
     const { name, context } = this.props
     context.stopObservingState(name, this.handleObservableChange)
+  }
+
+  // this might be less reliable in the future this
+  // prevents a rerender that causes an ugly cursor
+  // flash while typing in the middle of the textbox
+  shouldComponentUpdate (_, { value }) {
+    if (this.state.value === value) return false
+    return true
+  }
+
+  componentDidUpdate (_, { value: prevValue }) {
+    if (prevValue !== this.state.value) {
+      const pos = getChangeIndex(prevValue, this.state.value)
+
+      this.$input.current.selectionStart = pos
+      this.$input.current.selectionEnd = pos
+    }
   }
 
   handleObservableChange () {
@@ -46,12 +65,15 @@ class TextEditor extends React.Component {
     return (
       <EditorWrapper name={name} label={label} defaultValue={defaultValue} {...rest}>
         <input
+          ref={this.$input}
           type="text"
           id={name}
           name={name}
+          key={name}
           value={this.state.value}
-          onChange={ev => this.handleChange(ev)}
+          onChange={this.handleChange}
         />
+        {this.state.cursorPosition}
       </EditorWrapper>
     )
   }
@@ -77,3 +99,23 @@ export default ({ ...args }) =>
         <TextEditor context={context} {...args} />
     }
   </StatefulContext.Consumer>
+
+
+// helpers
+
+function getChangeIndex (a, b) {
+  let isReversed = false
+  if (a.length < b.length) {
+    [a, b] = [b, a]
+    isReversed = true
+  }
+
+  if (a.length === 0) {
+    return 1
+  }
+
+  return (
+    (isReversed ? 1 : 0) +
+    [...a].findIndex((chr, i) => chr !== b[i])
+  )
+}
