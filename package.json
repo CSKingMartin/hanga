@@ -21,6 +21,8 @@
   "dependencies": {
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-frame-component": "^4.0.1",
     "react-stateful-context": "^1.1.1"
   },
   "devDependencies": {

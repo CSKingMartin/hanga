@@ -1805,6 +1805,19 @@ randomatic@^3.0.0:
     kind-of "^6.0.0"
     math-random "^1.0.1"
 
+react-dom@^16.4.2:
+  version "16.4.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.2.tgz#4afed569689f2c561d2b8da0b819669c38a0bda4"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+
+react-frame-component@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-frame-component/-/react-frame-component-4.0.1.tgz#347836da33bb7eea2b173913200aa99509edfc3b"
+
 react-stateful-context@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-stateful-context/-/react-stateful-context-1.1.1.tgz#022e2f8c52a8f586f8c0ddff7d6392b88ffeb585"
