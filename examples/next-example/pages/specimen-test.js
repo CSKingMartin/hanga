@@ -11,35 +11,39 @@ export default () =>
 
     <h2>Static Specimen</h2>
 
-    <StatefulContext.Consumer>
+    <Specimen>
+      <button>This is a button</button>
+    </Specimen>
+
+    <h2>Dynamic Specimen with inline editors</h2>
+
+    <Specimen Editors={() => (
+      <Editor.Text
+        name="buttonText"
+        label="Button Text"
+        defaultValue="This button text is editable"
+      />
+    )}>
       {
-        () =>
-          <React.Fragment>
-            <Specimen>
-              <button>This is a button</button>
-            </Specimen>
-          </React.Fragment>
+        ({ buttonText }) =>
+          <button>{buttonText}</button>
       }
-    </StatefulContext.Consumer>
+    </Specimen>
 
     <h2>Dynamic Specimen</h2>
 
-    <StatefulContext.Consumer>
+    <Editor.Text
+      name="buttonText"
+      label="Button Text"
+      defaultValue="This button text is editable"
+    />
+
+    <Specimen>
       {
         ({ buttonText }) =>
-          <React.Fragment>
-            <Editor.Text
-              name="buttonText"
-              label="Button Text"
-              defaultValue="This button text is editable"
-            />
-
-            <Specimen>
-              <p>
-                <button>{buttonText}</button>
-              </p>
-            </Specimen>
-          </React.Fragment>
+          <p>
+            <button>{buttonText}</button>
+          </p>
       }
-    </StatefulContext.Consumer>
+    </Specimen>
   </StatefulContext.Provider>
