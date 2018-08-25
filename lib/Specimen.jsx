@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Frame from 'react-frame-component';
 
 const Specimen = ({
   children
 }) => (
-  <div />
+  <Frame>
+    {children}
+  </Frame>
 )
 
 Specimen.propTypes = {
