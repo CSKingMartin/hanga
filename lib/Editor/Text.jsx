@@ -71,7 +71,6 @@ class TextEditor extends React.Component {
           value={this.state.value}
           onChange={this.handleChange}
         />
-        {this.state.caretPosition}
       </EditorWrapper>
     )
   }
