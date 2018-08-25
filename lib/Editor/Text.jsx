@@ -8,7 +8,9 @@ class TextEditor extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      value: props.context[props.name] || props.defaultValue
+      value: props.context[props.name] || props.defaultValue,
+      rawValue: props.context[props.name] || props.defaultValue,
+      caretPosition: 0
     }
 
     this.$input = React.createRef()
@@ -26,20 +28,12 @@ class TextEditor extends React.Component {
     context.stopObservingState(name, this.handleObservableChange)
   }
 
-  // this might be less reliable in the future this
-  // prevents a rerender that causes an ugly cursor
-  // flash while typing in the middle of the textbox
-  shouldComponentUpdate (_, { value }) {
-    if (this.state.value === value) return false
-    return true
-  }
-
   componentDidUpdate (_, { value: prevValue }) {
     if (prevValue !== this.state.value) {
-      const pos = getChangeIndex(prevValue, this.state.value)
+      const $current = this.$input.current
 
-      this.$input.current.selectionStart = pos
-      this.$input.current.selectionEnd = pos
+      $current.selectionStart = this.state.caretPosition
+      $current.selectionEnd = this.state.caretPosition
     }
   }
 
@@ -50,6 +44,10 @@ class TextEditor extends React.Component {
 
   handleChange (ev) {
     const { name, context, onChange } = this.props
+    this.setState({
+      rawValue: String(ev.target.value),
+      caretPosition: Number(ev.target.selectionEnd)
+    })
     context.setContextState({ [name]: ev.target.value })
     if (onChange) onChange({ [name]: ev.target.value })
   }
@@ -73,7 +71,7 @@ class TextEditor extends React.Component {
           value={this.state.value}
           onChange={this.handleChange}
         />
-        {this.state.cursorPosition}
+        {this.state.caretPosition}
       </EditorWrapper>
     )
   }
@@ -99,22 +97,3 @@ export default ({ ...args }) =>
         <TextEditor context={context} {...args} />
     }
   </StatefulContext.Consumer>
-
-// helpers
-
-function getChangeIndex (a, b) {
-  let isReversed = false
-  if (a.length < b.length) {
-    [a, b] = [b, a]
-    isReversed = true
-  }
-
-  if (a.length === 0) {
-    return 1
-  }
-
-  return (
-    (isReversed ? 1 : 0) +
-    [...a].findIndex((chr, i) => chr !== b[i])
-  )
-}
