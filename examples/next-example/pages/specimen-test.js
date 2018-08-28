@@ -4,6 +4,7 @@ import {
   Specimen,
   StatefulContext
 } from 'hanga'
+import 'hanga/index.css'
 
 export default () =>
   <StatefulContext.Provider>
@@ -20,31 +21,44 @@ export default () =>
     <h2>Dynamic Specimen with inline editors</h2>
 
     <Specimen Editors={() => (
-      <Editor.Text
-        name="buttonText"
-        label="Button Text"
-        defaultValue="This button text is editable"
-      />
+      <React.Fragment>
+        <Editor.Text
+          name="buttonText"
+          defaultValue="This button text is editable"
+        />
+
+        <Editor.Select
+          name="color"
+          label="Color"
+          defaultValue={'blue'}
+          options={['red', 'blue', 'green']}
+        />
+
+        <Editor.Toggle
+          name="isDisabled"
+          defaultValue={false}
+        />
+      </React.Fragment>
     )}>
       {
-        ({ buttonText }) =>
-          <button className="btn">{buttonText}</button>
+        ({ color, isDisabled, buttonText }) =>
+          <button disabled={isDisabled} style={{ color }} className="btn">{buttonText}</button>
       }
     </Specimen>
 
     <h2>Dynamic Specimen</h2>
 
     <Editor.Text
-      name="buttonText"
+      name="otherButtonText"
       label="Button Text"
       defaultValue="This button text is editable"
     />
 
     <Specimen>
       {
-        ({ buttonText }) =>
+        ({ otherButtonText }) =>
           <React.Fragment>
-            <button>{buttonText}</button>
+            <button>{otherButtonText}</button>
           </React.Fragment>
       }
     </Specimen>
