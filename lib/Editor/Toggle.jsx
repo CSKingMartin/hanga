@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import StatefulContext from 'react-stateful-context'
 import EditorWrapper from './EditorWrapper'
+import css from './styles.css'
 
 // Toggle Editor
 class ToggleEditor extends React.Component {
@@ -51,9 +52,10 @@ class ToggleEditor extends React.Component {
           name={name}
           checked={this.state.isChecked}
           defaultValue={defaultValue}
+          className={css.checkboxInput}
           onChange={ev => this.handleChange(ev)}
         />
-        <label htmlFor={name}>{label || name}</label>
+        <label htmlFor={name} className={css.checkboxIndicator} />
       </EditorWrapper>
     )
   }

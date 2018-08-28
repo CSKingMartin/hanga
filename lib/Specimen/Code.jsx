@@ -6,6 +6,7 @@ import React from 'react'
 import Dom from 'react-dom/server'
 import reactElementToString from 'react-element-to-string'
 import StatefulContext from 'react-stateful-context'
+import css from './styles.css'
 
 const getTagName = (element) => {
   if (typeof element === 'string') return element
@@ -33,12 +34,14 @@ const renderHtmlCode = (component) =>
 const getChildren = (children, context) =>
   typeof children === 'function' ? children(context) : children
 
-const CodeView = ({ children }) =>
-  <pre>
+const CodeView = ({ type, className, children }) =>
+  <pre className={`${css.codeView} ${className} language-${type}`} >
     <code dangerouslySetInnerHTML={{ __html: children }} />
   </pre>
 
 CodeView.propTypes = {
+  type: PropTypes.oneOf(['react', 'html']),
+  className: PropTypes.string,
   children: PropTypes.node
 }
 
@@ -49,22 +52,22 @@ const Code = ({
   <StatefulContext.Consumer>
     {
       context => (
-        <div className="code">
+        <div className={css.code}>
           {
             view === 'react' &&
-            <div className="code-react"><CodeView>
+            <CodeView type="react" className={css.codeReact}>
               {
                 Prism.highlight(
                   renderReactCode(getChildren(children, context)),
                   Prism.languages.jsx
                 )
               }
-            </CodeView></div>
+            </CodeView>
           }
 
           {
             view === 'html' &&
-            <div className="code-html"><CodeView>
+            <CodeView type="html" className={css.codeHtml}>
               {
                 Prism.highlight(
                   pretty(
@@ -73,7 +76,7 @@ const Code = ({
                   Prism.languages.html
                 )
               }
-            </CodeView></div>
+            </CodeView>
           }
         </div>
       )

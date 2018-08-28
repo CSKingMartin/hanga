@@ -1,17 +1,33 @@
+import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
+import css from './styles.css'
 
-const Actions = (props) =>
-  <div className="actions">
-    <button onClick={props.handleCodeViewReact}>React</button>
-    <button onClick={props.handleCodeViewHtml}>HTML</button>
-    <button onClick={props.handleFullWidth}>Full Width</button>
+const Actions = ({
+  view,
+  handleCodeViewReact,
+  handleCodeViewHtml
+}) => (
+  <div className={css.actions}>
+    <button
+      className={classnames(css.actionButton, view === 'react' && css.actionButton__active)}
+      onClick={handleCodeViewReact}
+    >
+      React
+    </button>
+    <button
+      className={classnames(css.actionButton, view === 'html' && css.actionButton__active)}
+      onClick={handleCodeViewHtml}
+    >
+      HTML
+    </button>
   </div>
+)
 
 Actions.propTypes = {
+  view: PropTypes.string.isRequired,
   handleCodeViewReact: PropTypes.func,
-  handleCodeViewHtml: PropTypes.func,
-  handleFullWidth: PropTypes.func
+  handleCodeViewHtml: PropTypes.func
 }
 
 export default Actions

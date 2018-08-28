@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import StatefulContext from 'react-stateful-context'
 import EditorWrapper from './EditorWrapper'
+import css from './styles.css'
 
 // Text Editor
 class TextEditor extends React.Component {
@@ -69,6 +70,7 @@ class TextEditor extends React.Component {
           name={name}
           key={name}
           value={this.state.value}
+          className={css.textInput}
           onChange={this.handleChange}
         />
       </EditorWrapper>

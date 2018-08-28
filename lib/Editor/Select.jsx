@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import StatefulContext from 'react-stateful-context'
 import EditorWrapper from './EditorWrapper'
+import css from './styles.css'
 
 // Select Editor
 class SelectEditor extends React.Component {
@@ -46,29 +47,33 @@ class SelectEditor extends React.Component {
 
     return (
       <EditorWrapper name={name} label={label} defaultValue={defaultValue} {...rest}>
-        <select
-          id={name}
-          name={name}
-          value={this.state.value}
-          onChange={ev => this.handleChange(ev)}
-        >
-          {
-            options
-              .map(value => (
-                typeof value === 'object'
-                  ? value
-                  : { value, text: value }
-              ))
-              .map(opt => (
-                <option
-                  key={opt.value}
-                  value={opt.value}
-                >
-                  {opt.text}
-                </option>
-              ))
-          }
-        </select>
+        <div className={css.selectWrapper}>
+          <select
+            id={name}
+            name={name}
+            value={this.state.value}
+            className={css.selectInput}
+            onChange={ev => this.handleChange(ev)}
+          >
+            {
+              options
+                .map(value => (
+                  typeof value === 'object'
+                    ? value
+                    : { value, text: value }
+                ))
+                .map(opt => (
+                  <option
+                    key={opt.value}
+                    value={opt.value}
+                  >
+                    {opt.text}
+                  </option>
+                ))
+            }
+          </select>
+          <div className={css.selectIcon} />
+        </div>
       </EditorWrapper>
     )
   }

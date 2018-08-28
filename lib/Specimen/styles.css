@@ -1,0 +1,71 @@
+.specimen {
+  margin: 2em 0;
+  padding: 0 1em;
+}
+
+.editors {
+  background-color: #eee;
+  padding: 1em;
+}
+
+.resizer {
+  background-color: #ddd;
+  padding: 1em;
+}
+
+.preview {
+  background-color: #ccc;
+}
+
+.previewFrame {
+  border: none;
+  display: block;
+  margin: auto;
+  width: 100%;
+  max-width: 1280px;
+  background-color: #fff;
+}
+
+.actions {
+  background-color: #ddd;
+}
+
+.actionButton {
+  appearance: none;
+  border-radius: 0;
+  border: none;
+  padding: 1em;
+  font-size: 1em;
+  background-color: #ddd;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: #eee;
+  }
+
+  &__active {
+    background-color: #eee;
+
+  }
+}
+
+.code {
+
+}
+
+.codeView {
+  /* overwrite theme */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 1.2em !important;
+  background-color: #eee !important;
+}
+
+.codeReact {
+
+}
+
+.codeHtml {
+
+}

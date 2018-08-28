@@ -1,0 +1,13 @@
+:global{
+  @import '~prismjs/themes/prism.css'
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}

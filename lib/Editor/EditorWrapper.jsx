@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import StatefulContext from 'react-stateful-context'
+import css from './styles.css'
 
 // Editor Wrapper
 class EditorWrapper extends React.Component {
@@ -28,9 +29,9 @@ class EditorWrapper extends React.Component {
     } = this.props
 
     return (
-      <fieldset {...rest}>
-        <label htmlFor={name}>{label || name}</label>
-        <div>{children}</div>
+      <fieldset {...rest} className={css.wrapper}>
+        <label className={css.label} htmlFor={name}>{label || name}</label>
+        <div className={css.control}>{children}</div>
       </fieldset>
     )
   }

@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import css from './styles.css'
 
 const Editors = ({ children }) =>
-  <div className="editors">
+  <div className={css.editors}>
     {children}
   </div>
 
