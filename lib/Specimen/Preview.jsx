@@ -56,6 +56,7 @@ class Preview extends React.Component {
                   head={<Head />}
                   className={styles.previewFrame}
                   contentDidMount={this.handleFrameHeight}
+                  contentDidUpdate={this.handleFrameHeight}
                 >
                   {typeof children === 'function' ? children(context) : children}
                 </Frame>
