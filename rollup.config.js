@@ -22,17 +22,21 @@ export default {
     }
   ],
   plugins: [
-    eslint(),
+    eslint({
+      include: '**/*.{js,jsx}'
+    }),
     external(),
     postcss({
+      extensions: ['.css'],
       modules: true,
       extract: true
     }),
     babel({
+      include: '**/*.{js,jsx}',
       exclude: 'node_modules/**'
     }),
     resolve({
-      extensions: ['.js', '.jsx', '.css']
+      extensions: ['.js', '.jsx']
     }),
     commonjs()
   ]

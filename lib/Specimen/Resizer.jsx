@@ -4,7 +4,7 @@ import css from './styles.css'
 
 const Resizer = ({ handleResize, children }) =>
   <div className={css.resizer}>
-
+    {children}
   </div>
 
 Resizer.propTypes = {

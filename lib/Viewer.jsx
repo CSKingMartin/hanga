@@ -1,3 +1,7 @@
 import React from 'react'
-export default () =>
-  <div />
+
+const Viewer = () => (
+  <div>Viewer</div>
+)
+
+export default Viewer
