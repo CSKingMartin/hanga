@@ -38,8 +38,8 @@ class Resizer extends React.Component {
 
         <div className={css.resizerWidths}>
           {this.renderWidth(Infinity)}
-          {this.renderWidth(1360)}
-          {this.renderWidth(1140)}
+          {this.renderWidth(1440)}
+          {this.renderWidth(1180)}
           {this.renderWidth(960)}
           {this.renderWidth(800)}
           {this.renderWidth(640)}

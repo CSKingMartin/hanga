@@ -2,12 +2,11 @@
 
 .specimen {
   margin: 2em 0;
-  /* padding: 0 1em; */
 }
 
 .editors {
   display: flex;
-  background-color: #eee;
+  background-color: #f6f6f6;
   padding: 1em 0 1em 1em;
 
   & > fieldset {
@@ -78,7 +77,6 @@
   background-blend-mode: normal, difference, normal;
   background-size: 2em 2em;
   overflow: hidden;
-  border-bottom: 1px solid #ccc;
 }
 
 .previewFrameWrapper {
@@ -96,7 +94,7 @@
 
 .actions {
   text-align: center;
-  background-color: #ddd;
+  background-color: #eee;
 }
 
 .actionButton {
@@ -105,17 +103,12 @@
   border: none;
   padding: 1em;
   font-size: 1em;
-  background-color: #ddd;
+  background-color: #eee;
   cursor: pointer;
 
   &:hover,
-  &:focus {
-    background-color: #eee;
-  }
-
   &__active {
-    background-color: #eee;
-
+    background-color: #f6f6f6;
   }
 }
 
@@ -128,7 +121,7 @@
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   font-size: 1.2em !important;
-  background-color: #eee !important;
+  background-color: #f6f6f6 !important;
 }
 
 .codeReact {
