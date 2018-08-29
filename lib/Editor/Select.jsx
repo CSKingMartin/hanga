@@ -46,7 +46,7 @@ class SelectEditor extends React.Component {
     } = this.props
 
     return (
-      <EditorWrapper name={name} label={label} defaultValue={defaultValue} {...rest}>
+      <EditorWrapper type="select" name={name} label={label} defaultValue={defaultValue} {...rest}>
         <div className={css.selectWrapper}>
           <select
             id={name}

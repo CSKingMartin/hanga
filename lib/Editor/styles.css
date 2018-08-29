@@ -77,6 +77,7 @@
 .checkboxInput {
   position: absolute;
   opacity: 0;
+  width: 1px;
 
   &:focus ~ .checkboxIndicator,
   &:active ~ .checkboxIndicator {

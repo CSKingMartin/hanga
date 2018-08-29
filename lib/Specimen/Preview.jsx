@@ -10,12 +10,18 @@ export const SpecimenHead = () => <React.Fragment />
 class Preview extends React.Component {
   constructor (props) {
     super(props)
-    this.handleFrameMount = this.handleFrameMount.bind(this)
+    this.handleFrameHeight = this.handleFrameHeight.bind(this)
     this.$iframe = React.createRef()
   }
 
   componentDidMount () {
-    this.handleFrameMount()
+    this.handleFrameHeight()
+  }
+
+  componentDidUpdate (prevProps) {
+    if (prevProps.maxWidth !== this.props.maxWidth) {
+      this.handleFrameHeight()
+    }
   }
 
   onResize () {
@@ -23,7 +29,7 @@ class Preview extends React.Component {
     iframe.height = `${iframe.contentWindow.document.body.scrollHeight + 32}px`
   }
 
-  handleFrameMount () {
+  handleFrameHeight () {
     setTimeout(() => {
       this.onResize()
     })
@@ -32,24 +38,30 @@ class Preview extends React.Component {
   render () {
     const {
       Head = SpecimenHead,
+      maxWidth,
       children
     } = this.props
 
     return (
       <div className={styles.preview}>
-        <StatefulContext.Consumer>
-          {
-            context =>
-              <Frame
-                ref={this.$iframe}
-                head={<Head />}
-                className={styles.previewFrame}
-                contentDidMount={this.handleFrameMount}
-              >
-                {typeof children === 'function' ? children(context) : children}
-              </Frame>
-          }
-        </StatefulContext.Consumer>
+        <div
+          className={styles.previewFrameWrapper}
+          style={{ maxWidth: maxWidth === Infinity ? undefined : `${maxWidth}px` }}
+        >
+          <StatefulContext.Consumer>
+            {
+              context =>
+                <Frame
+                  ref={this.$iframe}
+                  head={<Head />}
+                  className={styles.previewFrame}
+                  contentDidMount={this.handleFrameHeight}
+                >
+                  {typeof children === 'function' ? children(context) : children}
+                </Frame>
+            }
+          </StatefulContext.Consumer>
+        </div>
       </div>
     )
   }
@@ -57,6 +69,7 @@ class Preview extends React.Component {
 
 Preview.propTypes = {
   Head: PropTypes.any,
+  maxWidth: PropTypes.number,
   children: PropTypes.any
 }
 

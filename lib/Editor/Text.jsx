@@ -62,7 +62,7 @@ class TextEditor extends React.Component {
     } = this.props
 
     return (
-      <EditorWrapper name={name} label={label} defaultValue={defaultValue} {...rest}>
+      <EditorWrapper type="text" name={name} label={label} defaultValue={defaultValue} {...rest}>
         <input
           ref={this.$input}
           type="text"

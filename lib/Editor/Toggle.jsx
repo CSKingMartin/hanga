@@ -45,7 +45,7 @@ class ToggleEditor extends React.Component {
     } = this.props
 
     return (
-      <EditorWrapper name={name} label={label} defaultValue={defaultValue} {...rest}>
+      <EditorWrapper type="toggle" name={name} label={label} defaultValue={defaultValue} {...rest}>
         <input
           type="checkbox"
           id={name}
