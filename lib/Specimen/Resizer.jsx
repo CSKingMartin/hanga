@@ -8,7 +8,7 @@ class Resizer extends React.Component {
     this.props.handleResize(width)
   }
 
-  renderWidth (width) {
+  renderWidth (width, name) {
     const isInfinity = width === Infinity
 
     return (
@@ -16,12 +16,12 @@ class Resizer extends React.Component {
         onClick={() => this.handleResize(width)}
         className={css.resizeWidthAction}
         style={{
-          display: isInfinity || this.props.screenWidth > width + 140 ? 'block' : 'none',
+          display: isInfinity || this.props.screenWidth > width + 20 ? 'block' : 'none',
           maxWidth: isInfinity ? undefined : `${width}px`,
-          zIndex: isInfinity ? 0 : 10000 - width
+          zIndex: isInfinity ? 100 : 10000 - width
         }}
       >
-        { isInfinity ? 'Full Width' : `${width}px` }
+        {name}
       </button>
     )
   }
@@ -39,14 +39,16 @@ class Resizer extends React.Component {
         </div>
 
         <div className={css.resizerWidths}>
-          {this.renderWidth(Infinity)}
-          {this.renderWidth(1440)}
-          {this.renderWidth(1180)}
-          {this.renderWidth(960)}
-          {this.renderWidth(800)}
-          {this.renderWidth(640)}
-          {this.renderWidth(480)}
-          {this.renderWidth(320)}
+          {this.renderWidth(Infinity, 'Full Width')}
+          {this.renderWidth(2560, '4k – 2560px')}
+          {this.renderWidth(1920, 'Desktop – 1920px')}
+          {this.renderWidth(1440, 'Laptop Large – 1440px')}
+          {this.renderWidth(1280, 'Laptop Medium – 1280px')}
+          {this.renderWidth(1024, 'Laptop – 1024px')}
+          {this.renderWidth(768, 'Tablet – 768px')}
+          {this.renderWidth(425, 'Mobile Large – 425px')}
+          {this.renderWidth(375, 'Mobile Medium – 375px')}
+          {this.renderWidth(320, 'Mobile Small – 320px')}
         </div>
       </div>
     )
