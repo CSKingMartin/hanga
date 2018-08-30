@@ -78,8 +78,8 @@ export default () =>
           <React.Fragment>
             <p><button>This is a button</button></p>
             {
-              [...Array(4)].map(() => (
-                <p>{loremIpsum}</p>
+              [...Array(4)].map((_, i) => (
+                <p key={i}>{loremIpsum}</p>
               ))
             }
           </React.Fragment>

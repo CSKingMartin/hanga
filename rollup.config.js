@@ -28,7 +28,7 @@ export default {
     external(),
     postcss({
       extensions: ['.css'],
-      modules: true,
+      // modules: true,
       extract: true
     }),
     babel({

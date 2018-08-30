@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
-import css from './styles.css'
+import css from './styles.module.css'
 
 const Actions = ({
   view,

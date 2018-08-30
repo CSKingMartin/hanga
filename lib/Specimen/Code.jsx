@@ -6,7 +6,7 @@ import React from 'react'
 import Dom from 'react-dom/server'
 import reactElementToString from 'react-element-to-string'
 import StatefulContext from 'react-stateful-context'
-import css from './styles.css'
+import css from './styles.module.css'
 
 const getTagName = (element) => {
   if (typeof element === 'string') return element
