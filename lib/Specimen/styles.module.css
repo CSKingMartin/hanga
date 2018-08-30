@@ -18,19 +18,17 @@
 
 .resizer {
   position: relative;
-  background-color: #eee;
-  border-bottom: 1px solid #ddd;
+  background-color: white;
 }
 
 .resizerHandles {
   display: none;
 }
 
-.resizerHandle {
-
-}
-
 .resizerWidths {
+  position: relative;
+  background-color: #eee;
+
   & > * {
     position: absolute;
     top: 0;
@@ -48,22 +46,29 @@
   margin: auto;
   appearance: none;
   background-color: transparent;
-  border: solid rgba(50, 50, 50, 0.1);
-  color: #999;
+  border: solid white;
+  border-width: 0 2px;
+  color: transparent;
   cursor: pointer;
-  border-width: 0 1px;
   font-size: 0.7em;
-  padding: 0.3em 0.65em;
+  padding: 0.1em 0.65em 0.15em;
   width: 100%;
-  text-align: left;
+  text-align: center;
   outline: none;
 
-  &:focus,
   &:hover {
-    border-color: #ccc;
-    color: #333;
+    color: #666;
     background-color: #ddd;
   }
+}
+
+.resizerScreenWidth {
+  margin: auto;
+  height: 100%;
+  border: solid blue;
+  border-width: 0 2px;
+  z-index: 10000;
+  pointer-events: none;
 }
 
 .preview {
