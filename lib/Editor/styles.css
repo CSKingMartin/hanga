@@ -1,0 +1,111 @@
+.wrapper {
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  padding-right: 1em;
+}
+
+.control {
+  display: flex;
+  margin-top: 0.5em;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.selectIcon {
+  content: '\0020';
+  position: absolute;
+  top: 50%;
+  right: 0.7em;
+  width: 0;
+  height: 0;
+  margin-top: -0.18em;
+  border-style: solid;
+  border-width: 0.4em 0.4em 0 0.4em;
+  border-color: #ccc transparent transparent transparent;
+  pointer-events: none;
+}
+
+.textInput,
+.selectInput,
+.checkboxIndicator {
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 0.4em;
+  background-color: white;
+
+  &:focus {
+    outline: none;
+    box-shadow: blue 0 0 2px;
+    border-color: blue;
+  }
+}
+
+.textInput,
+.selectInput,
+.checkboxInput {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+}
+
+.selectInput {
+  padding-right: 3em;
+
+  &:focus ~ .selectIcon {
+    border-top-color: blue;
+  }
+}
+
+.checkboxIndicator {
+  display: block;
+  position: relative;
+  padding: 1.05em 1.1em;
+  cursor: pointer;
+}
+
+.checkboxInput {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+
+  &:focus ~ .checkboxIndicator,
+  &:active ~ .checkboxIndicator {
+    outline: none;
+    box-shadow: blue 0 0 2px;
+    border-color: blue;
+  }
+
+  &:checked ~ .checkboxIndicator {
+    &::before,
+    &::after {
+      content: '\0020';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -1px;
+      margin-left: -0.5em;
+      width: 1em;
+      height: 2px;
+      background-color: blue;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}

@@ -2,19 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import StatefulContext from 'react-stateful-context'
 import EditorWrapper from './EditorWrapper'
+import css from './styles.css'
 
 // Text Editor
 class TextEditor extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      value: props.context[props.name] || props.defaultValue
+      value: props.context[props.name] || props.defaultValue,
+      rawValue: props.context[props.name] || props.defaultValue,
+      caretPosition: 0
     }
 
+    this.$input = React.createRef()
     this.handleObservableChange = this.handleObservableChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  componentWillMount () {
+  componentDidMount () {
     const { name, context } = this.props
     context.startObservingState(name, this.handleObservableChange)
   }
@@ -24,6 +29,15 @@ class TextEditor extends React.Component {
     context.stopObservingState(name, this.handleObservableChange)
   }
 
+  componentDidUpdate (_, { value: prevValue }) {
+    if (prevValue !== this.state.value) {
+      const $current = this.$input.current
+
+      $current.selectionStart = this.state.caretPosition
+      $current.selectionEnd = this.state.caretPosition
+    }
+  }
+
   handleObservableChange () {
     const { name, context } = this.props
     this.setState({ value: context[name] })
@@ -31,6 +45,10 @@ class TextEditor extends React.Component {
 
   handleChange (ev) {
     const { name, context, onChange } = this.props
+    this.setState({
+      rawValue: String(ev.target.value),
+      caretPosition: Number(ev.target.selectionEnd)
+    })
     context.setContextState({ [name]: ev.target.value })
     if (onChange) onChange({ [name]: ev.target.value })
   }
@@ -44,13 +62,16 @@ class TextEditor extends React.Component {
     } = this.props
 
     return (
-      <EditorWrapper name={name} label={label} defaultValue={defaultValue} {...rest}>
+      <EditorWrapper type="text" name={name} label={label} defaultValue={defaultValue} {...rest}>
         <input
+          ref={this.$input}
           type="text"
           id={name}
           name={name}
+          key={name}
           value={this.state.value}
-          onChange={ev => this.handleChange(ev)}
+          className={css.textInput}
+          onChange={this.handleChange}
         />
       </EditorWrapper>
     )

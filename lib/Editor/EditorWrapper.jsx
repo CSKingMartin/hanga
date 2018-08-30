@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import StatefulContext from 'react-stateful-context'
+import css from './styles.css'
 
 // Editor Wrapper
 class EditorWrapper extends React.Component {
@@ -22,15 +23,16 @@ class EditorWrapper extends React.Component {
     const {
       label,
       name,
+      type,
       children,
       context,
       ...rest
     } = this.props
 
     return (
-      <fieldset {...rest}>
-        <label htmlFor={name}>{label || name}</label>
-        <div>{children}</div>
+      <fieldset {...rest} className={css.wrapper} data-type={type}>
+        <label className={css.label} htmlFor={name}>{label || name}</label>
+        <div className={css.control}>{children}</div>
       </fieldset>
     )
   }
@@ -39,6 +41,7 @@ class EditorWrapper extends React.Component {
 EditorWrapper.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
+  type: PropTypes.string,
   defaultValue: PropTypes.any,
   children: PropTypes.any.isRequired,
   context: PropTypes.object

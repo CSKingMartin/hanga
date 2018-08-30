@@ -1,0 +1,134 @@
+@import '~prismjs/themes/prism.css';
+
+.specimen {
+  margin: 2em 0;
+}
+
+.editors {
+  display: flex;
+  background-color: #f6f6f6;
+  padding: 1em 0 1em 1em;
+
+  & > fieldset {
+    margin-right: 1em;
+  }
+
+  & > [data-type="text"] {
+    flex-grow: 1;
+  }
+}
+
+.resizer {
+  position: relative;
+  background-color: #eee;
+  border-bottom: 1px solid #ddd;
+}
+
+.resizerHandles {
+  display: none;
+}
+
+.resizerHandle {
+
+}
+
+.resizerWidths {
+  & > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &:first-child {
+      position: relative;
+    }
+  }
+}
+
+.resizeWidthAction {
+  display: block;
+  margin: auto;
+  appearance: none;
+  background-color: transparent;
+  border: solid rgba(50, 50, 50, 0.1);
+  color: #999;
+  cursor: pointer;
+  border-width: 0 1px;
+  font-size: 0.7em;
+  padding: 0.3em 0.65em;
+  width: 100%;
+  text-align: left;
+  outline: none;
+
+  &:focus,
+  &:hover {
+    border-color: #ccc;
+    color: #333;
+    background-color: #ddd;
+  }
+}
+
+.preview {
+  background-color: white;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
+    linear-gradient(to right, black 50%, white 50%),
+    linear-gradient(to bottom, black 50%, white 50%);
+  background-blend-mode: normal, difference, normal;
+  background-size: 1em 1em;
+  overflow: hidden;
+  padding: 1em;
+}
+
+.previewFrameWrapper {
+  margin: auto;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.075) 0 0 2em;
+}
+
+.previewFrame {
+  border: none;
+  display: block;
+  width: 100%;
+  background-color: #fff;
+}
+
+.actions {
+  text-align: center;
+  background-color: #eee;
+}
+
+.actionButton {
+  appearance: none;
+  border-radius: 0;
+  border: none;
+  padding: 1em;
+  font-size: 1em;
+  background-color: #eee;
+  cursor: pointer;
+
+  &:hover,
+  &__active {
+    background-color: #f6f6f6;
+  }
+}
+
+.code {
+
+}
+
+.codeView {
+  /* overwrite theme */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 1.2em !important;
+  background-color: #f6f6f6 !important;
+}
+
+.codeReact {
+
+}
+
+.codeHtml {
+
+}
