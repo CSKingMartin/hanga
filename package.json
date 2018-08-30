@@ -19,13 +19,16 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "babel-eslint": "^8.2.6",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
+    "react-loadable": "^5.5.0",
     "react-stateful-context": "^1.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",

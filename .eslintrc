@@ -1,7 +1,8 @@
 {
+  "parser": "babel-eslint",
   "extends": [
     "standard",
-    "standard-react"
+    "standard-react",
   ],
   "rules": {
     "jsx-quotes": [1, "prefer-double"]
