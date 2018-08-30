@@ -1,0 +1,15 @@
+@import "react-spinner/react-spinner.css";
+
+.react-spinner {
+  background-color: #D1D0D7;
+  border-radius: 50%;
+  height: 33px;
+  margin-top: 8rem;
+  position: relative;
+  width: 33px;
+}
+
+.react-spinner_bar {
+  left: calc(50% - 3px);
+  top: calc(50% - 2px);
+}
