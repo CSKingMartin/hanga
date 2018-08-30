@@ -16,7 +16,7 @@ class Resizer extends React.Component {
         onClick={() => this.handleResize(width)}
         className={css.resizeWidthAction}
         style={{
-          display: isInfinity || this.props.screenWidth > width + 140 ? 'block' : 'none',
+          display: isInfinity || this.props.screenWidth > width + 20 ? 'block' : 'none',
           maxWidth: isInfinity ? undefined : `${width}px`,
           zIndex: isInfinity ? 100 : 10000 - width
         }}
@@ -39,7 +39,7 @@ class Resizer extends React.Component {
         </div>
 
         <div className={css.resizerWidths}>
-          {this.renderWidth(Infinity, 'Full Screen')}
+          {this.renderWidth(Infinity, 'Full Width')}
           {this.renderWidth(2560, '4k – 2560px')}
           {this.renderWidth(1920, 'Desktop – 1920px')}
           {this.renderWidth(1440, 'Laptop Large – 1440px')}
@@ -49,11 +49,6 @@ class Resizer extends React.Component {
           {this.renderWidth(425, 'Mobile Large – 425px')}
           {this.renderWidth(375, 'Mobile Medium – 375px')}
           {this.renderWidth(320, 'Mobile Small – 320px')}
-
-          <div
-            className={css.resizerScreenWidth}
-            style={{ maxWidth: maxWidth === Infinity ? undefined : `${maxWidth}px` }}
-          />
         </div>
       </div>
     )
