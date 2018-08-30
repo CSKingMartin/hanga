@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Frame from 'react-frame-component'
 import StatefulContext from 'react-stateful-context'
 
-import styles from './styles.css'
+import styles from './styles.module.css'
 
 export const SpecimenHead = () => <React.Fragment />
 

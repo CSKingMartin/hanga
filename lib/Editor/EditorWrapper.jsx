@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import StatefulContext from 'react-stateful-context'
-import css from './styles.css'
+import css from './styles.module.css'
 
 // Editor Wrapper
 class EditorWrapper extends React.Component {

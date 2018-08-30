@@ -27,6 +27,7 @@
     "react-dom": "^16.4.2",
     "react-element-to-string": "^1.0.2",
     "react-frame-component": "^4.0.1",
+    "react-resize-detector": "^3.1.1",
     "react-stateful-context": "^1.1.1"
   },
   "devDependencies": {
@@ -43,6 +44,7 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-standard": "^3.1.0",
+    "postcss-import": "^12.0.0",
     "postcss-nested": "^3.0.0",
     "postcss-preset-env": "^5.3.0",
     "rollup": "^0.64.1",

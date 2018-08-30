@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
-import css from './styles.css'
+import css from './styles.module.css'
 
 class Resizer extends React.Component {
   handleResize (width) {
@@ -9,17 +9,19 @@ class Resizer extends React.Component {
   }
 
   renderWidth (width) {
+    const isInfinity = width === Infinity
+
     return (
       <button
         onClick={() => this.handleResize(width)}
         className={css.resizeWidthAction}
         style={{
-          display: this.props.screenWidth > width ? 'block' : 'block',
-          maxWidth: width === Infinity ? undefined : `${width}px`,
-          zIndex: 10000 - width
+          display: isInfinity || this.props.screenWidth > width + 140 ? 'block' : 'none',
+          maxWidth: isInfinity ? undefined : `${width}px`,
+          zIndex: isInfinity ? 0 : 10000 - width
         }}
       >
-        { width === Infinity ? 'Full Width' : `${width}px` }
+        { isInfinity ? 'Full Width' : `${width}px` }
       </button>
     )
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import StatefulContext from 'react-stateful-context'
 import EditorWrapper from './EditorWrapper'
-import css from './styles.css'
+import css from './styles.module.css'
 
 // Select Editor
 class SelectEditor extends React.Component {
