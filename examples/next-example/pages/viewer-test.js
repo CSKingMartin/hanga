@@ -8,7 +8,7 @@ export default () =>
   <div>
     {/* Viewer that takes a function */}
     <Viewer>
-      {() => import('../elements/Button')}
+      {() => import('../elements/Test')}
     </Viewer>
 
     {/* Viewer that takes a React component */}
