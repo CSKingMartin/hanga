@@ -1,4 +1,4 @@
-import Loadable from 'react-loadable'
+// import Loadable from 'react-loadable'
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -14,11 +14,11 @@ const LoadingComponent = (props) => {
   }
 }
 
-const ViewerComponent = (props) => Loadable({
-  loader: () => import(props.path),
-  loading: () => <LoadingComponent />,
-  delay: 5000
-})
+// const ViewerComponent = (props) => Loadable({
+//   loader: () => import(props.path),
+//   loading: () => <LoadingComponent />,
+//   delay: 5000
+// })
 
 class Viewer extends React.Component {
   render () {
@@ -27,7 +27,7 @@ class Viewer extends React.Component {
     } = this.props
 
     return (
-      <ViewerComponent className="Viewer" path={path} />
+      <LoadingComponent className="Viewer" path={path} />
     )
   }
 }
