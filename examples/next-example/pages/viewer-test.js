@@ -1,9 +1,12 @@
 import React from 'react'
+
 import {
   Viewer
 } from 'hanga'
 
 export default () =>
   <div>
-    <Viewer path="../elements/Button" />
+    <Viewer>
+      {() => import('../elements/Button')}
+    </Viewer>
   </div>
