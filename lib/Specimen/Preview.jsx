@@ -1,10 +1,10 @@
-import Draggable from 'react-draggable'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Frame from 'react-frame-component'
 import StatefulContext from 'react-stateful-context'
 
-import styles from './styles.module.css'
+import DragResizer from './DragResizer'
+import css from './styles.module.css'
 
 export const SpecimenHead = () => <React.Fragment />
 
@@ -14,9 +14,6 @@ class Preview extends React.Component {
     this.$iframe = React.createRef()
 
     this.handleFrameHeight = this.handleFrameHeight.bind(this)
-    this.handleStart = this.handleStart.bind(this)
-    this.handleDrag = this.handleDrag.bind(this)
-    this.handleStop = this.handleStop.bind(this)
   }
 
   componentDidMount () {
@@ -36,29 +33,19 @@ class Preview extends React.Component {
     })
   }
 
-  handleStart () {
-
-  }
-
-  handleDrag () {
-
-  }
-
-  handleStop () {
-
-  }
-
   render () {
     const {
       Head = SpecimenHead,
       maxWidth,
+      screenWidth,
+      handleResize,
       children
     } = this.props
 
     return (
-      <div className={styles.preview}>
+      <div className={css.preview}>
         <div
-          className={styles.previewFrameWrapper}
+          className={css.previewFrameWrapper}
           style={{ maxWidth: maxWidth === Infinity ? undefined : `${maxWidth}px` }}
         >
           <StatefulContext.Consumer>
@@ -67,7 +54,7 @@ class Preview extends React.Component {
                 <Frame
                   ref={this.$iframe}
                   head={<Head />}
-                  className={styles.previewFrame}
+                  className={css.previewFrame}
                   contentDidMount={this.handleFrameHeight}
                   contentDidUpdate={this.handleFrameHeight}
                 >
@@ -75,19 +62,13 @@ class Preview extends React.Component {
                 </Frame>
             }
           </StatefulContext.Consumer>
-
-          <Draggable
-            axis="x"
-            handle={styles.previewDragHandle}
-            onStart={this.handleStart}
-            onDrag={this.handleDrag}
-            onStop={this.handleStop}
-          >
-            <div className={styles.previewDrag}>
-              <div className={styles.previewDragHandle} />
-            </div>
-          </Draggable>
         </div>
+
+        <DragResizer
+          maxWidth={maxWidth}
+          screenWidth={screenWidth}
+          handleResize={handleResize}
+        />
       </div>
     )
   }
@@ -96,6 +77,7 @@ class Preview extends React.Component {
 Preview.propTypes = {
   Head: PropTypes.any,
   maxWidth: PropTypes.number,
+  screenWidth: PropTypes.number,
   handleResize: PropTypes.func,
   children: PropTypes.any
 }
