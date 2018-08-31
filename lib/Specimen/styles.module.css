@@ -190,25 +190,22 @@
     // margin-left: -2px;
   }
 
-  &__active {
-    border-color: #f6f6f6;
-  }
 
   &:hover,
   &:focus {
-    border-color: blue;
-    outline: none;
+    border-color: #ddd;
     z-index: 2;
   }
 
-  &:hover {
-    border-color: #ddd;
+  &__active,
+  &__active:hover,
+  &__active:focus {
+    border-color: #333;
   }
 
-
-  &:hover,
   &__active {
-    background-color: #f6f6f6;
+    background-color: #333;
+    color: white;
   }
 }
 
@@ -220,8 +217,9 @@
   /* overwrite theme */
   margin-top: 0 !important;
   margin-bottom: 0 !important;
-  font-size: 1.2em !important;
-  background-color: #f6f6f6 !important;
+  font-size: 16px !important;
+  background-color: #333 !important;
+  border-radius: 0 !important;
 }
 
 .codeReact {

@@ -16,7 +16,7 @@ class Resizer extends React.Component {
         onClick={() => this.handleResize(width)}
         className={css.resizeWidthAction}
         style={{
-          display: isInfinity || this.props.screenWidth > width + 20 ? 'block' : 'none',
+          display: isInfinity || this.props.screenWidth > width + 32 ? 'block' : 'none',
           maxWidth: isInfinity ? undefined : `${width}px`,
           zIndex: isInfinity ? 100 : 10000 - width
         }}
