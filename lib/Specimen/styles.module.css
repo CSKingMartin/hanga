@@ -152,7 +152,7 @@
     height: 2px;
     transform: rotate(90deg);
     background-color: black;
-    opacity: 0.1;
+    opacity: 0.05;
   }
 
   &::after { left: 0; }
