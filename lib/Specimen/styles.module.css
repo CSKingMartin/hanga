@@ -1,5 +1,9 @@
 .specimen {
   margin: 2em 0;
+
+  & :global(*) {
+    box-sizing: border-box;
+  }
 }
 
 .editors {
