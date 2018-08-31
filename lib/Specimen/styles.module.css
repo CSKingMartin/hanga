@@ -181,36 +181,31 @@
   appearance: none;
   border-radius: 0;
   border: none;
-  padding: 1em;
+  padding: 0.75em 1em;
   font-size: 1em;
   cursor: pointer;
-  border: 2px solid white;
-
-  & + .actionButton {
-    // margin-left: -2px;
-  }
-
 
   &:hover,
   &:focus {
-    border-color: #ddd;
+    background-color: #eee;
     z-index: 2;
-  }
-
-  &__active,
-  &__active:hover,
-  &__active:focus {
-    border-color: #333;
+    outline: none;
   }
 
   &__active {
-    background-color: #333;
-    color: white;
+    &::after {
+      content: '\0020';
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      margin-left: -4px;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid #333;
+    }
   }
-}
-
-.code {
-
 }
 
 .codeView {
@@ -220,12 +215,4 @@
   font-size: 16px !important;
   background-color: #333 !important;
   border-radius: 0 !important;
-}
-
-.codeReact {
-
-}
-
-.codeHtml {
-
 }
