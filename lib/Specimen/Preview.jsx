@@ -1,3 +1,4 @@
+import Draggable from 'react-draggable'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Frame from 'react-frame-component'
@@ -10,8 +11,12 @@ export const SpecimenHead = () => <React.Fragment />
 class Preview extends React.Component {
   constructor (props) {
     super(props)
-    this.handleFrameHeight = this.handleFrameHeight.bind(this)
     this.$iframe = React.createRef()
+
+    this.handleFrameHeight = this.handleFrameHeight.bind(this)
+    this.handleStart = this.handleStart.bind(this)
+    this.handleDrag = this.handleDrag.bind(this)
+    this.handleStop = this.handleStop.bind(this)
   }
 
   componentDidMount () {
@@ -24,15 +29,23 @@ class Preview extends React.Component {
     }
   }
 
-  onResize () {
-    const iframe = this.$iframe.current.node
-    iframe.height = `${iframe.contentWindow.document.body.scrollHeight + 32}px`
-  }
-
   handleFrameHeight () {
     setTimeout(() => {
-      this.onResize()
+      const iframe = this.$iframe.current.node
+      iframe.height = `${iframe.contentWindow.document.body.scrollHeight + 32}px`
     })
+  }
+
+  handleStart () {
+
+  }
+
+  handleDrag () {
+
+  }
+
+  handleStop () {
+
   }
 
   render () {
@@ -62,6 +75,18 @@ class Preview extends React.Component {
                 </Frame>
             }
           </StatefulContext.Consumer>
+
+          <Draggable
+            axis="x"
+            handle={styles.previewDragHandle}
+            onStart={this.handleStart}
+            onDrag={this.handleDrag}
+            onStop={this.handleStop}
+          >
+            <div className={styles.previewDrag}>
+              <div className={styles.previewDragHandle} />
+            </div>
+          </Draggable>
         </div>
       </div>
     )
@@ -71,6 +96,7 @@ class Preview extends React.Component {
 Preview.propTypes = {
   Head: PropTypes.any,
   maxWidth: PropTypes.number,
+  handleResize: PropTypes.func,
   children: PropTypes.any
 }
 

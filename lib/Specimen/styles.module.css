@@ -92,6 +92,7 @@
 }
 
 .previewFrameWrapper {
+  position: relative;
   margin: auto;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.075) 0 0 2em;
@@ -102,6 +103,29 @@
   display: block;
   width: 100%;
   background-color: #fff;
+}
+
+
+.previewDrag,
+.previewDragHandle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1em;
+}
+
+.previewDrag {
+  margin-right: -1em;
+  display: inline-block;
+}
+
+.previewDragHandle {
+  left: 0;
+  cursor: ew-resize;
+  font-size: 0;
+  color: transparent;
+  background-color: block;
 }
 
 .actions {
