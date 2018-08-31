@@ -8,24 +8,12 @@ import reactElementToString from 'react-element-to-string'
 import StatefulContext from 'react-stateful-context'
 import css from './styles.module.css'
 
-const getTagName = (element) => {
-  if (typeof element === 'string') return element
-  if (typeof element.type === 'string') return element.type
-  if (element.type.displayName) return element.type.displayName
-  if (element.type.name) return element.type.name
-  if (element.props && element.props.tagName) return element.props.tagName
-  return 'unknown-element'
-}
-
 const renderReactCode = (component) => {
   if (Array.isArray(component)) {
     return component.map(renderReactCode).join('\n')
   }
 
-  return reactElementToString(component, {
-    displayName: getTagName,
-    showDefaultProps: false
-  })
+  return reactElementToString(component)
 }
 
 const renderHtmlCode = (component) =>

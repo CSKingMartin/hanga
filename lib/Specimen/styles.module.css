@@ -93,7 +93,7 @@
   background-position: top center;
   box-shadow: inset rgba(0, 0, 0, 0.075) 0 0 2em;
   overflow: hidden;
-  padding: 1em;
+  padding: 0 1em;
 }
 
 .previewFrameWrapper {
