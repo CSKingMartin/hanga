@@ -4,15 +4,18 @@
 
 .editors {
   display: flex;
+  flex-flow: row wrap;
   background-color: #f6f6f6;
-  padding: 1em 0 1em 1em;
+  padding: 1em 0 0 1em;
 
   & > fieldset {
     margin-right: 1em;
+    margin-bottom: 1em;
   }
 
   & > [data-type="text"] {
     flex-grow: 1;
+    min-width: 280px;
   }
 }
 
@@ -59,9 +62,14 @@
   text-align: center;
   outline: none;
 
+  &:focus,
   &:hover {
     color: #666;
     background-color: #eee;
+  }
+
+  &:focus {
+    border-color: blue;
   }
 }
 
@@ -73,6 +81,8 @@
     linear-gradient(to bottom, black 50%, white 50%);
   background-blend-mode: normal, difference, normal;
   background-size: 1em 1em;
+  background-position: top center;
+  box-shadow: inset rgba(0, 0, 0, 0.075) 0 0 2em;
   overflow: hidden;
   padding: 1em;
 }
@@ -92,17 +102,37 @@
 
 .actions {
   text-align: center;
-  background-color: #eee;
 }
 
 .actionButton {
+  position: relative;
   appearance: none;
   border-radius: 0;
   border: none;
   padding: 1em;
   font-size: 1em;
-  background-color: #eee;
   cursor: pointer;
+  border: 2px solid white;
+
+  & + .actionButton {
+    // margin-left: -2px;
+  }
+
+  &__active {
+    border-color: #f6f6f6;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: blue;
+    outline: none;
+    z-index: 2;
+  }
+
+  &:hover {
+    border-color: #ddd;
+  }
+
 
   &:hover,
   &__active {

@@ -18,13 +18,18 @@ export default () =>
       <button className="btn">This is a button</button>
     </Specimen>
 
-    <h2>Dynamic Specimen with inline editors</h2>
+    <h2>Dynamic Specimen</h2>
 
     <Specimen Editors={() => (
       <React.Fragment>
         <Editor.Text
           name="buttonText"
           defaultValue="This button text is editable"
+        />
+
+        <Editor.Toggle
+          name="isDisabled"
+          defaultValue={false}
         />
 
         <Editor.Select
@@ -34,49 +39,18 @@ export default () =>
           options={['red', 'blue', 'green']}
         />
 
-        <Editor.Toggle
-          name="isDisabled"
-          defaultValue={false}
-        />
-      </React.Fragment>
-    )}>
-      {
-        ({ color, isDisabled, buttonText }) =>
-          <button disabled={isDisabled} style={{ color }} className="btn">{buttonText}</button>
-      }
-    </Specimen>
-
-    <h2>Dynamic Specimen</h2>
-
-    <Editor.Text
-      name="otherButtonText"
-      label="Button Text"
-      defaultValue="This button text is editable"
-    />
-
-    <Specimen>
-      {
-        ({ otherButtonText }) =>
-          <React.Fragment>
-            <button>{otherButtonText}</button>
-          </React.Fragment>
-      }
-    </Specimen>
-
-    <h2>Really tall Specimen</h2>
-
-    <Specimen Editors={() => (
-      <React.Fragment>
         <Editor.Text
           name="loremIpsum"
+          label="Lorem Ipsum Text"
           defaultValue="Aliqua tempor labore minim fugiat ipsum. Est nostrud culpa mollit duis proident nostrud proident deserunt sunt. Consequat esse tempor sunt fugiat cillum sint aute sit adipisicing irure nulla adipisicing ullamco ea. Duis tempor ea Lorem proident laborum est duis id consequat quis. Ea ullamco sunt excepteur in labore esse non mollit dolore nulla aute occaecat."
         />
       </React.Fragment>
     )}>
       {
-        ({ loremIpsum }) =>
+        ({ buttonText, isDisabled, color, loremIpsum }) =>
           <React.Fragment>
-            <p><button>This is a button</button></p>
+            <button disabled={isDisabled} style={{ color }} className="btn">{buttonText}</button>
+
             {
               [...Array(4)].map((_, i) => (
                 <p key={i}>{loremIpsum}</p>
