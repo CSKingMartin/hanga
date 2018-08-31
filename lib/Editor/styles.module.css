@@ -83,13 +83,6 @@
   opacity: 0;
   width: 1px;
 
-  &:focus ~ .checkboxIndicator,
-  &:active ~ .checkboxIndicator {
-    outline: none;
-    box-shadow: blue 0 0 2px;
-    border-color: blue;
-  }
-
   &:checked ~ .checkboxIndicator {
     &::before,
     &::after {
@@ -101,7 +94,7 @@
       margin-left: -0.5em;
       width: 1em;
       height: 2px;
-      background-color: blue;
+      background-color: black;
     }
 
     &::before {
@@ -111,5 +104,12 @@
     &::after {
       transform: rotate(-45deg);
     }
+  }
+
+  &:focus ~ .checkboxIndicator,
+  &:active ~ .checkboxIndicator {
+    outline: none;
+    box-shadow: blue 0 0 2px;
+    border-color: blue;
   }
 }
