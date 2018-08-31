@@ -27,16 +27,16 @@ export default () =>
           defaultValue="This button text is editable"
         />
 
-        <Editor.Toggle
-          name="isDisabled"
-          defaultValue={false}
-        />
-
         <Editor.Select
           name="color"
           label="Color"
           defaultValue={'blue'}
           options={['red', 'blue', 'green']}
+        />
+
+        <Editor.Toggle
+          name="isDisabled"
+          defaultValue={false}
         />
 
         <Editor.Text
