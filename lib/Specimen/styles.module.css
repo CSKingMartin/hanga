@@ -118,10 +118,9 @@
 
 .drag {
   position: absolute;
-  top: 1em;
-  bottom: 1em;
-  width: 1em;
-  margin-left: em;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
 }
 
 .drag {
@@ -131,10 +130,18 @@
 
 .dragLeft {
   left: 0%;
+  margin-left: calc(-1 * (100vw - 1em));
+
+  .dragHandle::after { right: -3px; }
+  .dragHandle::before { right: 0; }
 }
 
 .dragRight {
   right: 0%;
+  margin-right: calc(-1 * (100vw - 1em));
+
+  .dragHandle::after { left: -3px; }
+  .dragHandle::before { left: 0; }
 }
 
 .dragHandle {
@@ -155,14 +162,12 @@
     opacity: 0.05;
   }
 
-  &::after { left: 0; }
-  &::before { right: 0; }
-
   &Active,
   &Active,
+  &:active,
   &:focus,
   &:hover {
-    background-color: color-mod(white alpha(50%));
+    background-color: color-mod(white alpha(20%));
 
     &::after,
     &::before {
@@ -170,11 +175,15 @@
       background-color: blue;
     }
   }
+
+  &:active {
+    background-color: color-mod(white alpha(50%));
+  }
 }
 
 .actions {
   text-align: center;
-  background-color: #333;
+  padding: 0.5em 1em;
 }
 
 .actionButton {
@@ -182,31 +191,57 @@
   appearance: none;
   border-radius: 0;
   border: none;
-  padding: 0.75em 1em;
-  font-size: 1em;
+  padding: 0.5em 1em;
+  margin: 0.25em 0;
+  font-size: 0.9em;
+  font-weight: 400;
   cursor: pointer;
-  background-color: #333;
-  color: #ccc;
+  background-color: #f6f6f6;
+  border: 2px solid #f6f6f6;
+  color: #666;
 
+  &:first-child {
+    border-radius: 4px 0 0 4px;
+  }
 
-  &:hover,
-  &:focus,
+  &:last-child {
+    border-radius: 0 4px 4px 0;
+  }
+
+  & + .actionButton {
+    margin-left: -2px;
+  }
+
+  &:hover {
+    color: #333;
+    border-color: #eee;
+    background-color: #eee;
+  }
+
+  &:active,
+  &:focus {
+    color: black;
+    border-color: blue;
+    box-shadow: blue 0 0 2px;
+    outline: none;
+    z-index: 4;
+  }
+
   &__active {
-    color: white;
     z-index: 2;
     outline: none;
+    color: black;
+    border-color: black;
+    background-color: #eee;
 
-    &::after {
-      content: '\0020';
-      position: absolute;
-      bottom: 0px;
-      left: 50%;
-      margin-left: -4px;
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-bottom: 5px solid #222;
+    &:hover {
+      color: black;
+      border-color: black;
+    }
+
+    &:focus {
+      color: black;
+      border-color: blue;
     }
   }
 }
@@ -216,6 +251,6 @@
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   font-size: 16px !important;
-  background-color: #222 !important;
+  background-color: #f6f6f6 !important;
   border-radius: 0 !important;
 }

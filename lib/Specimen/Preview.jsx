@@ -39,6 +39,7 @@ class Preview extends React.Component {
       maxWidth,
       screenWidth,
       handleResize,
+      hideResizer,
       children
     } = this.props
 
@@ -64,11 +65,14 @@ class Preview extends React.Component {
           </StatefulContext.Consumer>
         </div>
 
-        <DragResizer
-          maxWidth={maxWidth}
-          screenWidth={screenWidth}
-          handleResize={handleResize}
-        />
+        {
+          !hideResizer &&
+          <DragResizer
+            maxWidth={maxWidth}
+            screenWidth={screenWidth}
+            handleResize={handleResize}
+          />
+        }
       </div>
     )
   }
@@ -79,6 +83,7 @@ Preview.propTypes = {
   maxWidth: PropTypes.number,
   screenWidth: PropTypes.number,
   handleResize: PropTypes.func,
+  hideResizer: PropTypes.bool,
   children: PropTypes.any
 }
 

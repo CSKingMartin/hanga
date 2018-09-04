@@ -12,7 +12,7 @@ class EditorWrapper extends React.Component {
       defaultValue
     } = this.props
 
-    if (defaultValue) {
+    if (defaultValue !== undefined) {
       context.setContextState({
         [name]: defaultValue
       })

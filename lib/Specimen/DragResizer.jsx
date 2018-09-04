@@ -23,10 +23,10 @@ class Preview extends React.Component {
 
   handleDrag (_, { x }) {
     const offset = Math.abs(x)
-    const newWidth = this.props.screenWidth - (offset * 2) - 32
+    const newWidth = this.props.screenWidth - (offset * 2)
 
-    this.setState({ offset })
-    this.props.handleResize(newWidth)
+    // 32 is left/right padding, this should probably be calculated
+    this.props.handleResize(newWidth < this.props.screenWidth ? newWidth - 32 : Infinity)
   }
 
   handleDragStart (side) {
@@ -37,14 +37,18 @@ class Preview extends React.Component {
     this.setState({ activeDragger: false })
   }
 
-  componentDidUpdate ({ maxWidth: prevMaxWidth }) {
-    if (prevMaxWidth !== this.props.maxWidth) {
-      this.setState({ // eslint-disable-line
-        offset:
-          this.props.maxWidth !== Infinity
-            ? (this.props.screenWidth - 32) / 2 - this.props.maxWidth / 2
-            : 0
-      })
+  componentDidUpdate ({ maxWidth: prevMaxWidth, screenWidth: prevScreenWidth }) {
+    const { maxWidth, screenWidth } = this.props
+
+    // when the screen is resized or max width is changes by the resizer
+    // the offset position of the drag handlers should be updated
+    if (prevScreenWidth !== screenWidth || prevMaxWidth !== maxWidth) {
+      const offset =
+        (maxWidth <= screenWidth && maxWidth !== Infinity)
+          ? (screenWidth - 32) / 2 - maxWidth / 2
+          : 0
+
+      this.setState({ offset }) // eslint-disable-line
     }
   }
 
