@@ -40,10 +40,16 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 3;
+
+  :global(.react-draggable-transparent-selection) & {
+    pointer-events: none;
+    z-index: 1;
+  }
 }
 
 .resizerCurrent {
-  display: relative;
+  position: relative;
   font-size: 0.7em;
   padding: 0.1em 0.65em 0.15em;
   font-family: system-ui;
@@ -52,7 +58,7 @@
   color: #999;
   margin: auto;
   opacity: 0;
-  z-index: 100;
+  z-index: 2;
 
   span {
     font-weight: normal;

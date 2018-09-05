@@ -29,14 +29,16 @@ class Preview extends React.Component {
   handleFrameHeight () {
     clearTimeout(this.timer)
     this.timer = setTimeout(() => {
-      const iframe = this.$iframe.current.node
-      const { body } = iframe.contentWindow.document
-      const height = body.scrollHeight + 32
+      if (this.$iframe.current) {
+        const iframe = this.$iframe.current.node
+        const { body } = iframe.contentWindow.document
+        const height = body.scrollHeight + 32
 
-      iframe.height = ''
-      iframe.height = height
+        iframe.height = ''
+        iframe.height = height
 
-      this.props.handleResize({ height })
+        this.props.handleResize({ height })
+      }
     })
   }
 
