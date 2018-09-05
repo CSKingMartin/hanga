@@ -5,7 +5,7 @@ import css from './styles.module.css'
 
 class Resizer extends React.Component {
   handleResize (width) {
-    this.props.handleResize(width)
+    this.props.handleResize({ width })
   }
 
   renderWidth (width, name) {
@@ -27,15 +27,16 @@ class Resizer extends React.Component {
   }
 
   render () {
-    const { maxWidth } = this.props
+    const { maxWidth, previewHeight } = this.props
     return (
       <div className={css.resizer}>
         <div
-          className={css.resizerHandles}
+          className={css.resizerCurrent}
           style={{ maxWidth: maxWidth === Infinity ? undefined : `${maxWidth}px` }}
         >
-          <button className={classnames(css.resizeHandle, css.resizerHandleLeft)} />
-          <button className={classnames(css.resizeHandle, css.resizerHandleRight)} />
+          <span>{ maxWidth === Infinity ? 'Full Width' : `${maxWidth}px` }</span>
+          &nbsp; &times; &nbsp;
+          <span>{previewHeight}px</span>
         </div>
 
         <div className={css.resizerWidths}>
@@ -58,6 +59,7 @@ class Resizer extends React.Component {
 Resizer.propTypes = {
   maxWidth: PropTypes.number,
   screenWidth: PropTypes.number,
+  previewHeight: PropTypes.number,
   handleResize: PropTypes.func
 }
 

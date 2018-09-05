@@ -26,7 +26,9 @@ class Preview extends React.Component {
     const newWidth = this.props.screenWidth - (offset * 2)
 
     // 32 is left/right padding, this should probably be calculated
-    this.props.handleResize(newWidth < this.props.screenWidth ? newWidth - 32 : Infinity)
+    this.props.handleResize({
+      width: newWidth < this.props.screenWidth ? newWidth - 32 : Infinity
+    })
   }
 
   handleDragStart (side) {

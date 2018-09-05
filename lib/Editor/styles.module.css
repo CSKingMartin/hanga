@@ -63,6 +63,13 @@
   width: 100%;
 }
 
+.textareaInput {
+  min-height: 5.6em;
+  line-height: 1.4em;
+  resize: vertical;
+  width: 100%;
+}
+
 .selectInput {
   padding-right: 3em;
 

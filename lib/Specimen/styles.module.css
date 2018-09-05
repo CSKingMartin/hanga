@@ -21,41 +21,57 @@
     flex-grow: 1;
     min-width: 280px;
   }
+
+  & > [data-type="textarea"] {
+    width: 100%;
+  }
 }
 
 .resizer {
   position: relative;
-  background-color: white;
-
-  :global(.react-draggable-transparent-selection) & {
-    pointer-events: none;
-  }
-}
-
-.resizerHandles {
-  display: none;
-}
-
-.resizerWidths {
-  position: relative;
   background-color: #f6f6f6;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
+}
 
-  & > * {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+.resizerWidths {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 
-    &:first-child {
-      position: relative;
-      border: none;
-    }
+.resizerCurrent {
+  display: relative;
+  font-size: 0.7em;
+  padding: 0.1em 0.65em 0.15em;
+  font-family: system-ui;
+  font-weight: 300;
+  text-align: center;
+  color: #999;
+  margin: auto;
+  opacity: 0;
+  z-index: 100;
+
+  span {
+    font-weight: normal;
+    color: #666;
+  }
+
+  :global(.react-draggable-transparent-selection) & {
+    pointer-events: none;
+    opacity: 1;
+    border: 2px solid blue;
+    border-width: 0 2px;
   }
 }
 
 .resizeWidthAction {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   display: block;
   margin: auto;
   appearance: none;
@@ -69,6 +85,10 @@
   width: 100%;
   text-align: center;
   outline: none;
+
+  &:first-child {
+    border: none;
+  }
 
   &:focus,
   &:hover {
@@ -176,8 +196,9 @@
     }
   }
 
+  :global(.react-draggable-transparent-selection) &,
   &:active {
-    background-color: color-mod(white alpha(50%));
+    background-color: color-mod(white alpha(60%));
   }
 }
 
