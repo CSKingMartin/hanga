@@ -9,5 +9,6 @@ export default () =>
       <li><Link href="/editor-test"><a>Editor Test</a></Link></li>
       <li><Link href="/viewer-test"><a>Viewer Test</a></Link></li>
       <li><Link href="/specimen-test"><a>Specimen Test</a></Link></li>
+      <li><Link href="/catalog-test"><a>Catalog Test</a></Link></li>
     </ul>
   </div>
