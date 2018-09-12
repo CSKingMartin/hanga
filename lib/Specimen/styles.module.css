@@ -120,6 +120,13 @@
   box-shadow: inset rgba(0, 0, 0, 0.075) 0 0 2em;
   overflow: hidden;
   padding: 1em;
+
+  :global(.react-draggable-transparent-selection) & {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)),
+      linear-gradient(to right, black 50%, white 50%),
+      linear-gradient(to bottom, black 50%, white 50%);
+  }
 }
 
 .previewFrameWrapper {
@@ -193,18 +200,11 @@
   &:active,
   &:focus,
   &:hover {
-    background-color: color-mod(white alpha(20%));
-
     &::after,
     &::before {
       opacity: 1;
       background-color: blue;
     }
-  }
-
-  :global(.react-draggable-transparent-selection) &,
-  &:active {
-    background-color: color-mod(white alpha(60%));
   }
 }
 
