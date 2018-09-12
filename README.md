@@ -35,7 +35,7 @@ const catalogApp = () =>
   <Catalog
     // required:
     archive={archive}
-    activeEntry={archive.find(entry => entry.id === router.selectedId)}
+    activeEntry={entry => entry.id === router.selectedId}
 
     // defaults:
     activeView={activeEntry => activeEntry.Component} // return promise / component
@@ -43,8 +43,8 @@ const catalogApp = () =>
     // Components
     ItemLink={(item) => <Link><a href={`?selectedId=${item.id}`}>{item.name}</a></Link>}
     Navigation={({ ...rest }) => <Catalog.Navigation {...rest} />}
-    Layout={({ ...rest }) => <Catalog.Layout {...rest} />}
     Viewer={({ ...rest }) => <Viewer {...rest} />}
+    Layout={({ ...rest }) => <Catalog.Layout {...rest} />}
   />
 
 // connect the router and use query params to select the active
