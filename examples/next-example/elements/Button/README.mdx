@@ -18,39 +18,37 @@ This is a button that can be used for interactivity or linking.
 </thead>
 <tbody>
   <tr>
-    <td>href</td>
+    <td><code>href</code></td>
     <td>String</td>
     <td>Optional href will use an `a` tag instead of a `button`</td>
-    <td><Editor.Text name="href" /></td>
+    <td><Editor.Text hideLabel name="href" /></td>
   </tr>
   <tr>
-    <td>block</td>
+    <td><code>block</code></td>
     <td>Bool</td>
     <td>Optional href will use an `a` tag instead of a `button`</td>
-    <td><Editor.Toggle name="block" /></td>
+    <td><Editor.Toggle hideLabel name="block" /></td>
   </tr>
   <tr>
-    <td>size</td>
+    <td><code>size</code></td>
     <td>Enum</td>
     <td></td>
-    <td><Editor.Select name="size" options={['small', 'medium', 'large']} defaultValue="medium" /></td>
+    <td><Editor.Select hideLabel name="size" options={['small', 'medium', 'large']} defaultValue="medium" /></td>
   </tr>
   <tr>
-    <td>theme</td>
+    <td><code>theme</code></td>
     <td>Enum</td>
     <td></td>
-    <td><Editor.Select name="theme" options={['passive', 'positive', 'negative']} defaultValue="passive" /></td>
+    <td><Editor.Select hideLabel name="theme" options={['passive', 'positive', 'negative']} defaultValue="passive" /></td>
   </tr>
   <tr>
-    <td>children</td>
+    <td><code>children</code></td>
     <td>Children</td>
     <td></td>
-    <td><Editor.Text multiline name="children" defaultValue="Aliqua tempor labore minim fugiat ipsum." /></td>
+    <td><Editor.Text multiline hideLabel name="children" defaultValue="Aliqua tempor labore minim fugiat ipsum." /></td>
   </tr>
 </tbody>
 </table>
-
-## Configurable Example
 
 <Specimen
   Head={() => <link rel="stylesheet" href="/_next/static/style.css" />}

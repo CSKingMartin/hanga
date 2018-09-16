@@ -210,12 +210,7 @@
 
 .actions {
   text-align: left;
-  padding: 0.5em 1em;
-
-  @media (width > 960px) {
-    padding-left: 2em;
-    padding-right: 2em;
-  }
+  padding: 0.5em 0;
 }
 
 .actionButton {
