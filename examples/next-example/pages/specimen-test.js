@@ -4,7 +4,6 @@ import {
   Specimen,
   StatefulContext
 } from 'hanga'
-import 'hanga/index.css'
 
 const Box = () => <div>This is a box component</div>
 

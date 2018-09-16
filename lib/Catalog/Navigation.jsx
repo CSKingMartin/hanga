@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import css from './styles.module.css'
+
 const Navigation = (props) => {
   const {
     archive,
@@ -8,7 +10,7 @@ const Navigation = (props) => {
   } = props
 
   return (
-    <ul>
+    <ul className={css.navigation}>
       {
         archive.map(entry => (
           <li key={entry.id}>

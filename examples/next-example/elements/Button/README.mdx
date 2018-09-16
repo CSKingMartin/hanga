@@ -1,0 +1,69 @@
+import { Specimen, Editor } from 'hanga'
+import Button from './Button.jsx'
+
+# Button
+
+This is a button that can be used for interactivity or linking.
+
+## Props
+
+<table>
+<thead>
+  <tr>
+    <th>Prop</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Value</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>href</td>
+    <td>String</td>
+    <td>Optional href will use an `a` tag instead of a `button`</td>
+    <td><Editor.Text name="href" /></td>
+  </tr>
+  <tr>
+    <td>block</td>
+    <td>Bool</td>
+    <td>Optional href will use an `a` tag instead of a `button`</td>
+    <td><Editor.Toggle name="block" /></td>
+  </tr>
+  <tr>
+    <td>size</td>
+    <td>Enum</td>
+    <td></td>
+    <td><Editor.Select name="size" options={['small', 'medium', 'large']} defaultValue="medium" /></td>
+  </tr>
+  <tr>
+    <td>theme</td>
+    <td>Enum</td>
+    <td></td>
+    <td><Editor.Select name="theme" options={['passive', 'positive', 'negative']} defaultValue="passive" /></td>
+  </tr>
+  <tr>
+    <td>children</td>
+    <td>Children</td>
+    <td></td>
+    <td><Editor.Text multiline name="children" defaultValue="Aliqua tempor labore minim fugiat ipsum." /></td>
+  </tr>
+</tbody>
+</table>
+
+## Configurable Example
+
+<Specimen
+  Head={() => <link rel="stylesheet" href="/_next/static/style.css" />}
+>
+  {
+    ({ href, block, size, theme, children }) =>
+      <Button
+        href={href}
+        block={block}
+        size={size}
+        theme={theme}
+      >
+        {children}
+      </Button>
+  }
+</Specimen>

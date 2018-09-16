@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import css from './styles.module.css'
+
 const Layout = (props) => {
   const {
     Navigation,
@@ -9,9 +11,9 @@ const Layout = (props) => {
   } = props
 
   return (
-    <div>
-      <Navigation {...props} />
-      <Viewer {...props}>{activeComponent}</Viewer>
+    <div className={css.layout}>
+      <div className={css.layoutNavigation}><Navigation {...props} /></div>
+      <div className={css.layoutViewer}><Viewer {...props}>{activeComponent}</Viewer></div>
     </div>
   )
 }

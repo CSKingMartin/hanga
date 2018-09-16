@@ -42,6 +42,11 @@ class Preview extends React.Component {
     })
   }
 
+  renderChildren (children, context) {
+    // this is causing infinite rendering on each frame
+    return typeof children === 'function' ? children(context) : children
+  }
+
   render () {
     const {
       Head = SpecimenHead,
@@ -69,7 +74,7 @@ class Preview extends React.Component {
                   contentDidMount={this.handleFrameHeight}
                   contentDidUpdate={this.handleFrameHeight}
                 >
-                  {typeof children === 'function' ? children(context) : children}
+                  {this.renderChildren(children, context)}
                 </Frame>
             }
           </StatefulContext.Consumer>

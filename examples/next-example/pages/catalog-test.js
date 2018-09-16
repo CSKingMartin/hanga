@@ -4,32 +4,28 @@ import { Catalog } from 'hanga'
 import { withRouter } from 'next/router'
 import Link from 'next/link'
 
+import Button from '../elements/Button/README.mdx'
+
 const archive = [{
-  id: 'specimen',
-  name: 'Specimen Test',
-  Component: () => import('./specimen-test.js')
-}, {
-  id: 'editor',
-  name: 'Editor Test',
-  Component: () => import('./editor-test.js')
+  id: 'button',
+  name: 'Button',
+  Component: () => Promise.resolve(Button)
 }]
 
 // Catalog nav + viewer
 const catalogApp = ({ router }) =>
-  <React.Fragment>
-    <Catalog
-      // required:
-      archive={archive}
-      findActiveEntry={entry => entry.id === router.query.selectedId}
+  <Catalog
+    // required:
+    archive={archive}
+    findActiveEntry={entry => entry.id === router.query.selectedId}
 
-      ItemLink={
-        ({ entry }) =>
-          <Link href={`?selectedId=${entry.id}`}>
-            <a>{entry.name || entry.id}</a>
-          </Link>
-      }
-    />
-  </React.Fragment>
+    ItemLink={
+      ({ entry }) =>
+        <Link href={`?selectedId=${entry.id}`}>
+          <a>{entry.name || entry.id}</a>
+        </Link>
+    }
+  />
 
 catalogApp.propTypes = {
   router: PropTypes.object

@@ -14,11 +14,11 @@
   font-size: 1rem;
   font-weight: 700;
   padding-right: 1em;
+  margin-bottom: 0.5em;
 }
 
 .control {
   display: flex;
-  margin-top: 0.5em;
 }
 
 .selectWrapper {

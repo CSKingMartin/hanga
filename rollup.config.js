@@ -5,39 +5,50 @@ import { eslint } from 'rollup-plugin-eslint'
 import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 
-import pkg from './package.json'
+const plugins = [
+  eslint({
+    include: '**/*.{js,jsx}'
+  }),
+  external(),
+  postcss({
+    extensions: ['.css']
+  }),
+  babel({
+    include: '**/*.{js,jsx}',
+    exclude: 'node_modules/**'
+  }),
+  resolve({
+    extensions: ['.js', '.jsx']
+  }),
+  commonjs()
+]
 
-export default {
-  input: 'lib/index.js',
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs',
-      sourcemap: true
-    },
-    {
-      file: pkg.module,
-      format: 'es',
-      sourcemap: true
-    }
-  ],
-  plugins: [
-    eslint({
-      include: '**/*.{js,jsx}'
-    }),
-    external(),
-    postcss({
-      extensions: ['.css'],
-      // modules: true,
-      extract: true
-    }),
-    babel({
-      include: '**/*.{js,jsx}',
-      exclude: 'node_modules/**'
-    }),
-    resolve({
-      extensions: ['.js', '.jsx']
-    }),
-    commonjs()
-  ]
-}
+const createOutput = config => [
+  {
+    file: config.main,
+    format: 'cjs',
+    sourcemap: true
+  },
+  {
+    file: config.module,
+    format: 'es',
+    sourcemap: true
+  }
+]
+
+const createEntry = (input, output) => ({
+  plugins,
+  input,
+  output: createOutput({
+    main: `dist/${output}.js`,
+    module: `dist/${output}.es.js`
+  })
+})
+
+export default [
+  createEntry('lib/index.js', 'index'),
+  createEntry('lib/Catalog/index.js', 'catalog'),
+  createEntry('lib/Editor/index.js', 'editor'),
+  createEntry('lib/Specimen/index.js', 'specimen'),
+  createEntry('lib/Viewer/index.js', 'viewer')
+]

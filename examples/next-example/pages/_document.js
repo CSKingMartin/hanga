@@ -6,7 +6,6 @@ export default class extends Document {
     return (
       <html>
         <Head>
-          <link rel="stylesheet" href="/_next/static/style.css" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <body>

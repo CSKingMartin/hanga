@@ -54,6 +54,7 @@ class ToggleEditor extends React.Component {
           defaultValue={defaultValue}
           className={css.checkboxInput}
           onChange={ev => this.handleChange(ev)}
+          data-editor-toggle
         />
         <label htmlFor={name} className={css.checkboxIndicator} />
       </EditorWrapper>

@@ -2,6 +2,7 @@ const withCSS = require('@zeit/next-css')
 const withMDX = require('@zeit/next-mdx')
 
 const config = {
+  cssModules: true,
   pageExtensions: ['js', 'jsx', 'mdx'],
   webpack: config => {
     config.resolve.extensions.push('.mdx')

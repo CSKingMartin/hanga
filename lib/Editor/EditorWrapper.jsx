@@ -26,12 +26,14 @@ class EditorWrapper extends React.Component {
       type,
       children,
       context,
+      hideLabel,
+      multiline,//hde
       ...rest
     } = this.props
 
     return (
-      <fieldset {...rest} className={css.wrapper} data-type={type}>
-        <label className={css.label} htmlFor={name}>{label || name}</label>
+      <fieldset className={css.wrapper} data-type={type} {...rest}>
+        { !hideLabel && <label className={css.label} htmlFor={name}>{label || name}</label> }
         <div className={css.control}>{children}</div>
       </fieldset>
     )
@@ -44,7 +46,12 @@ EditorWrapper.propTypes = {
   type: PropTypes.string,
   defaultValue: PropTypes.any,
   children: PropTypes.any.isRequired,
-  context: PropTypes.object
+  context: PropTypes.object,
+  hideLabel: PropTypes.bool
+}
+
+EditorWrapper.defaultValue = {
+  hideLabel: false
 }
 
 export default ({ children, ...rest }) =>

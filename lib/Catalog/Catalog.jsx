@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import StatefulContext from 'react-stateful-context'
 
 import Layout from './Layout'
 import ItemLink from './ItemLink'
@@ -17,11 +18,13 @@ const Catalog = (props) => {
   const activeComponent = findActiveComponent(activeEntry)
 
   return (
-    <Layout
-      activeEntry={activeEntry}
-      activeComponent={activeComponent}
-      {...props}
-    />
+    <StatefulContext.Provider>
+      <Layout
+        activeEntry={activeEntry}
+        activeComponent={activeComponent}
+        {...props}
+      />
+    </StatefulContext.Provider>
   )
 }
 

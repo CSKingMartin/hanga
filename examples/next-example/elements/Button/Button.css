@@ -1,0 +1,81 @@
+.button {
+  appearance: none;
+  background-color: white;
+  border: 1px solid #666;
+  border-radius: 4px;
+  color: #666;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;
+  font-family: system-ui;
+  line-height: 1.5em;
+  padding: 0.5em 0.75em;
+  text-decoration: none;
+  text-align: center;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #666;
+    color: white;
+  }
+}
+
+/* Variants */
+.block {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Sizes */
+.sizeSmall {
+  padding: 0.5em 0.5em;
+  font-size: 0.9em;
+}
+
+.sizeMedium {
+  padding: 0.5em 0.75em;
+}
+
+.sizeLarge {
+  padding: 0.75em 1em;
+  font-size: 1.1em;
+}
+
+/* Themes */
+.themePositive {
+  border-color: green;
+  color: green;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: green;
+    color: white;
+  }
+}
+
+.themeNegative {
+  border-color: red;
+  color: red;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: red;
+    color: white;
+  }
+}
+
+.themePassive {
+  border-color: #666;
+  color: #666;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #666;
+    color: white;
+  }
+}

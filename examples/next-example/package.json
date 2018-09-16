@@ -11,9 +11,11 @@
     "@mdx-js/mdx": "^0.15.0-2",
     "@zeit/next-css": "^0.2.0",
     "@zeit/next-mdx": "^1.1.0",
+    "classnames": "^2.2.6",
     "next": "^6.1.1",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react-dom": "^16.4.2",
+    "reset-css": "^4.0.1"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^3.1.1"

@@ -1,0 +1,58 @@
+:global {
+  * { box-sizing: border-box; }
+
+  html,body {
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui;
+  }
+}
+
+.layoutViewer {
+  padding: 1em;
+
+  @media (width > 960px) {
+    padding: 2em;
+  }
+
+  & > div > * {
+    max-width: 1140px;
+  }
+
+  table {
+    width: 100%;
+    margin-top: 1.6em;
+    margin-bottom: 1.6em;
+  }
+
+  tr {
+    vertical-align: top;
+  }
+
+  th {
+    text-align: left;
+    font-size: 0.8em;
+    text-transform: uppercase;
+  }
+
+  td {
+    padding-top: 1em;
+
+    &:first-child {
+      font-weight: bold;
+    }
+  }
+
+  [data-specimen] {
+    margin-left: -1em;
+    width: calc(100% + 2em);
+    max-width: calc(100% + 2em);
+
+    @media (width > 960px) {
+      margin-left: -2em;
+      width: calc(100% + 4em);
+      max-width: calc(100% + 4em);
+    }
+  }
+}

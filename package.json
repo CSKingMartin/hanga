@@ -14,7 +14,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf dist && rollup -c",
     "dev": "rollup -c -w",
     "prepublishOnly": "npm run build"
   },

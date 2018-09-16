@@ -82,6 +82,7 @@ class TextEditor extends React.Component {
                 value={this.state.value}
                 className={classnames(css.textInput, css.textareaInput)}
                 onChange={this.handleChange}
+                data-editor-textarea
               />
             )
             : (
@@ -94,6 +95,7 @@ class TextEditor extends React.Component {
                 value={this.state.value}
                 className={css.textInput}
                 onChange={this.handleChange}
+                data-editor-text
               />
             )
         }
