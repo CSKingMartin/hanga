@@ -27,7 +27,7 @@ class EditorWrapper extends React.Component {
       children,
       context,
       hideLabel,
-      multiline,//hde
+      multiline, // hide
       ...rest
     } = this.props
 

@@ -33,6 +33,7 @@ const Presets = ({ defaultProps, children }) => (
 )
 
 Presets.propTypes = {
+  defaultProps: PropTypes.object,
   children: PropTypes.node
 }
 

@@ -22,6 +22,10 @@
     margin-right: auto;
   }
 
+  a {
+    color: blue;
+  }
+
   table {
     width: 100%;
     margin-top: 1.6em;

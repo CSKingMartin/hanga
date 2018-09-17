@@ -17,3 +17,7 @@ body {
   font-range: 32em 80em;
   line-height: 1.5em;
 }
+
+:global .frame-content {
+  padding: 1em;
+}
