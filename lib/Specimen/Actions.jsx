@@ -9,18 +9,28 @@ const Actions = ({
   handleCodeViewHtml
 }) => (
   <div className={css.actions}>
-    <button
-      className={classnames(css.actionButton, view === 'react' && css.actionButton__active)}
-      onClick={handleCodeViewReact}
-    >
-      React
-    </button>
-    <button
-      className={classnames(css.actionButton, view === 'html' && css.actionButton__active)}
-      onClick={handleCodeViewHtml}
-    >
-      HTML
-    </button>
+    <div>
+      <button
+        className={classnames(css.actionButton, css.actionButtonLeft, view === 'react' && css.actionButton__active)}
+        onClick={handleCodeViewReact}
+      >
+        React
+      </button>
+      <button
+        className={classnames(css.actionButton, css.actionButtonRight, view === 'html' && css.actionButton__active)}
+        onClick={handleCodeViewHtml}
+      >
+        HTML
+      </button>
+    </div>
+
+    <div>
+      <button
+        className={classnames(css.actionButton, css.actionButtonSingle)}
+      >
+        Copy Code
+      </button>
+    </div>
   </div>
 )
 

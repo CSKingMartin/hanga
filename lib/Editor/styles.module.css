@@ -41,7 +41,7 @@
 
 .textInput,
 .selectInput,
-.checkboxIndicator {
+.radioIndicator {
   padding: 0.5em 1em;
   font-size: 1rem;
   border: 2px solid #ccc;
@@ -57,7 +57,7 @@
 
 .textInput,
 .selectInput,
-.checkboxInput {
+.radioInput {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -78,19 +78,50 @@
   }
 }
 
-.checkboxIndicator {
+.radioIndicator {
   display: block;
   position: relative;
-  padding: 1.05em 1.1em;
+  padding: 0.65em 1em;
   cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-color: #ddd;
+  color: #aaa;
 }
 
-.checkboxInput {
+.radioInputWrapper {
+  display: flex;
+
+  & > * + * {
+    margin-left: -2px;
+  }
+}
+
+.radioInputLeft .radioIndicator {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 1em;
+}
+
+.radioInputRight .radioIndicator {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: 1em;
+}
+
+.radioInput {
   position: absolute;
   opacity: 0;
   width: 1px;
 
-  &:checked ~ .checkboxIndicator {
+  &:checked ~ .radioIndicator {
+    border-color: #ccc;
+    background-color: #eee;
+    color: #222;
+    z-index: 1;
+    /*
     &::before,
     &::after {
       content: '\0020';
@@ -111,12 +142,14 @@
     &::after {
       transform: rotate(-45deg);
     }
+    */
   }
 
-  &:focus ~ .checkboxIndicator,
-  &:active ~ .checkboxIndicator {
+  &:focus ~ .radioIndicator,
+  &:active ~ .radioIndicator {
     outline: none;
     box-shadow: blue 0 0 2px;
     border-color: blue;
+    z-index: 2;
   }
 }

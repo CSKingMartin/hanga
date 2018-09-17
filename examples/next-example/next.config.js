@@ -3,6 +3,10 @@ const withMDX = require('@zeit/next-mdx')
 
 const config = {
   cssModules: true,
+  cssLoaderOptions: {
+    importLoaders: 1,
+    localIdentName: '[name]_[local]'
+  },
   pageExtensions: ['js', 'jsx', 'mdx'],
   webpack: config => {
     config.resolve.extensions.push('.mdx')

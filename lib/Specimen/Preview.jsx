@@ -68,7 +68,7 @@ class Preview extends React.Component {
               context =>
                 <Frame
                   ref={this.$iframe}
-                  sandbox="allow-scripts allow-same-origin"
+                  sandbox="allow-scripts allow-same-origin allow-top-navigation"
                   head={<Head />}
                   className={css.previewFrame}
                   contentDidMount={this.handleFrameHeight}

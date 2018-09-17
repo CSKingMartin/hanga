@@ -22,7 +22,7 @@
 }
 
 /* Variants */
-.block {
+.fullWidth {
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -34,7 +34,7 @@
   font-size: 0.9em;
 }
 
-.sizeMedium {
+.sizeDefault {
   padding: 0.5em 0.75em;
 }
 

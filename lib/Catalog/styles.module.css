@@ -18,6 +18,8 @@
 
   & > div > * {
     max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   table {
@@ -32,7 +34,7 @@
       background-color: #eee;
       display: inline-block;
       font-size: 1.1em;
-      padding: 0.25em 0.5em
+      padding: 0.25em 0.5em;
     }
   }
 
@@ -42,18 +44,26 @@
     }
   }
 
-  td, th {
+  td {
     padding: 0.5em;
   }
 
   th {
     text-align: left;
     font-size: 0.8em;
+    padding: 0.625em;
     text-transform: uppercase;
   }
 
+  [data-editor-select],
   [data-specimen] {
-    width: calc(100%);
-    max-width: calc(100%);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  [data-editor-toggle-wrapper],
+  [data-editor-select],
+  [data-editor-toggle] + * {
+    margin-left: auto;
   }
 }

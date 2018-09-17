@@ -1,63 +1,61 @@
-import { Specimen, Editor } from 'hanga'
+import { Specimen, PropTable, Presets, Editor } from 'hanga'
 import Button from './Button.jsx'
 
 # Button
 
 This is a button that can be used for interactivity or linking.
 
-## Props
+## Examples
 
-<table>
-<thead>
-  <tr>
-    <th>Prop</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Value</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><code>href</code></td>
-    <td>String</td>
-    <td>Optional href will use an `a` tag instead of a `button`</td>
-    <td><Editor.Text hideLabel name="href" /></td>
-  </tr>
-  <tr>
-    <td><code>block</code></td>
-    <td>Bool</td>
-    <td>Optional href will use an `a` tag instead of a `button`</td>
-    <td><Editor.Toggle hideLabel name="block" /></td>
-  </tr>
-  <tr>
-    <td><code>size</code></td>
-    <td>Enum</td>
-    <td></td>
-    <td><Editor.Select hideLabel name="size" options={['small', 'medium', 'large']} defaultValue="medium" /></td>
-  </tr>
-  <tr>
-    <td><code>theme</code></td>
-    <td>Enum</td>
-    <td></td>
-    <td><Editor.Select hideLabel name="theme" options={['passive', 'positive', 'negative']} defaultValue="passive" /></td>
-  </tr>
-  <tr>
-    <td><code>children</code></td>
-    <td>Children</td>
-    <td></td>
-    <td><Editor.Text multiline hideLabel name="children" defaultValue="Aliqua tempor labore minim fugiat ipsum." /></td>
-  </tr>
-</tbody>
-</table>
+<Presets
+  defaultProps={{
+    href: '',
+    fullWidth: false,
+    size: 'default',
+    theme: 'passive',
+    children: 'Commodo fugiat nulla sit officia'
+  }}
+>
+  <Presets.Option
+    name="Basic Button"
+    props={{
+      children: 'This is a basic button'
+    }}
+  />
+  <Presets.Option
+    name="Large Positive Button"
+    props={{
+      size: 'large',
+      theme: 'positive',
+      children: 'This is a large positive button'
+    }}
+  />
+  <Presets.Option
+    name="Small Negative Button"
+    props={{
+      size: 'small',
+      theme: 'negative',
+      children: 'This is a small negative button'
+    }}
+  />
+  <Presets.Option
+    name="Full Width Button Link"
+    props={{
+      href: '#wow',
+      fullWidth: true,
+      children: 'This is a wide button that acts as a link'
+    }}
+  />
+</Presets>
 
 <Specimen
   Head={() => <link rel="stylesheet" href="/_next/static/style.css" />}
 >
   {
-    ({ href, block, size, theme, children }) =>
+    ({ href, fullWidth, size, theme, children }) =>
       <Button
         href={href}
-        block={block}
+        fullWidth={fullWidth}
         size={size}
         theme={theme}
       >
@@ -65,3 +63,33 @@ This is a button that can be used for interactivity or linking.
       </Button>
   }
 </Specimen>
+
+<PropTable>
+  <PropTable.Row
+    name="size"
+    description="Changes the padding and font size of the button"
+    options={['default', 'small', 'large']}
+    defaultValue="default"
+  />
+  <PropTable.Row
+    name="theme"
+    description="Indicates the purpose of the button"
+    options={['passive', 'positive', 'negative']}
+    defaultValue="passive"
+  />
+  <PropTable.Row
+    name="fullWidth"
+    description="Allows the button to grow to the width of its container"
+    defaultValue={false}
+  />
+  <PropTable.Row
+    name="href"
+    description="Optional – Add when button should act as a traditional link"
+    defaultValue=""
+  />
+  <PropTable.Row
+    name="children"
+    description="Inner content of the button"
+    defaultValue="Aliqua tempor labore minim fugiat ipsum"
+  />
+</PropTable>

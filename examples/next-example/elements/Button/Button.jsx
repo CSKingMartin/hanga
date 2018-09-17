@@ -6,15 +6,15 @@ import css from './Button.css'
 const Button = ({
   href,
   children,
-  block,
+  fullWidth,
   size,
   theme,
   ...props
 }) => {
   const className = classnames(css.button, {
-    [css.block]: block,
+    [css.fullWidth]: fullWidth,
     [css.sizeSmall]: size === 'small',
-    [css.sizeMedium]: size === 'medium',
+    [css.sizeDefault]: size === 'default',
     [css.sizeLarge]: size === 'large',
     [css.themePassive]: theme === 'passive',
     [css.themePositive]: theme === 'positive',
@@ -30,14 +30,15 @@ const Button = ({
 
 Button.propTypes = {
   href: PropTypes.string,
-  block: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  fullWidth: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'default', 'large']),
   theme: PropTypes.oneOf(['passive', 'positive', 'negative']),
   children: PropTypes.node
 }
 
 Button.defaultValues = {
-
+  size: 'default',
+  theme: 'passive'
 }
 
 export default Button

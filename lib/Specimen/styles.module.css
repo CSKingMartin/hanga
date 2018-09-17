@@ -1,6 +1,4 @@
 .specimen {
-  margin: 2em 0;
-
   & :global(*) {
     box-sizing: border-box;
   }
@@ -209,8 +207,16 @@
 }
 
 .actions {
-  text-align: left;
-  padding: 0.5em 0;
+  background-color: #272822;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 1em 0;
+  text-align: center;
+  width: 100%;
+
+  @media (width > 960px) {
+    padding: 2em 2em 0;
+  }
 }
 
 .actionButton {
@@ -219,56 +225,57 @@
   border-radius: 0;
   border: none;
   padding: 0.5em 1em;
-  margin: 0.25em 0;
+  margin: 0;
   font-size: 0.9em;
   font-weight: 400;
   cursor: pointer;
   background-color: #f6f6f6;
-  border: 2px solid #f6f6f6;
   color: #666;
 
-  &:first-child {
+  &Left {
     border-radius: 4px 0 0 4px;
   }
 
-  &:last-child {
+  &Right {
     border-radius: 0 4px 4px 0;
   }
 
-  & + .actionButton {
-    margin-left: -2px;
+  &Single {
+    border-radius: 4px;
   }
 
+  & + .actionButton {
+    // margin-left: -2px;
+  }
+
+
+  &:active,
+  &:focus,
   &:hover {
-    color: #333;
-    border-color: #eee;
+    color: #000;
     background-color: #eee;
   }
 
-  &:active,
   &:focus {
-    color: black;
-    border-color: blue;
-    box-shadow: blue 0 0 2px;
-    outline: none;
     z-index: 4;
   }
 
   &__active {
     z-index: 2;
-    outline: none;
     color: black;
-    border-color: black;
+    border-color: #ccc;
     background-color: #eee;
+    box-shadow: inset #bbb 0 0 0.5em;
 
     &:hover {
       color: black;
-      border-color: black;
+      border-color: #eee;
     }
 
+    &:active,
     &:focus {
       color: black;
-      border-color: blue;
+      border-color: #999;
     }
   }
 }
@@ -278,10 +285,11 @@
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   font-size: 16px !important;
-  background-color: #f6f6f6 !important;
   border-radius: 0 !important;
+  padding-top: 1em !important;
 
   @media (width > 960px) {
     padding: 2em !important;
+    padding-top: 1em !important;
   }
 }
