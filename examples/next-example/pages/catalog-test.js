@@ -3,14 +3,7 @@ import React from 'react'
 import { Catalog } from 'hanga'
 import { withRouter } from 'next/router'
 import Link from 'next/link'
-
-import Button from '../elements/Button/README.mdx'
-
-const archive = [{
-  id: 'button',
-  name: 'Button',
-  Component: () => Promise.resolve(Button)
-}]
+import archive from '../elements/'
 
 // Catalog nav + viewer
 const catalogApp = ({ router }) =>

@@ -12,6 +12,7 @@ class SelectEditor extends React.Component {
       value: props.context[props.name] || props.defaultValue
     }
 
+    this.handleChange = this.handleChange.bind(this)
     this.handleObservableChange = this.handleObservableChange.bind(this)
   }
 
@@ -31,9 +32,8 @@ class SelectEditor extends React.Component {
   }
 
   handleChange (ev) {
-    const { name, context, onChange } = this.props
+    const { name, context } = this.props
     context.setContextState({ [name]: ev.target.value })
-    if (onChange) onChange({ [name]: ev.target.value })
   }
 
   render () {
@@ -53,7 +53,7 @@ class SelectEditor extends React.Component {
             name={name}
             value={this.state.value}
             className={css.selectInput}
-            onChange={ev => this.handleChange(ev)}
+            onChange={this.handleChange}
           >
             {
               options
@@ -91,8 +91,7 @@ SelectEditor.propTypes = {
         text: PropTypes.string.isRequired
       })
     ])
-  ),
-  onChange: PropTypes.func
+  )
 }
 
 export default ({ ...args }) =>

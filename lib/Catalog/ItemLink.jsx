@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import css from './styles.module.css'
-
 const ItemLink = ({ entry }) =>
   <a href={`?selectedId=${entry.id}`}>{entry.name || entry.id}</a>
 

@@ -11,7 +11,7 @@ const Button = ({
   theme,
   ...props
 }) => {
-  const className = classnames(css.button, {
+  const className = classnames(css.root, {
     [css.fullWidth]: fullWidth,
     [css.sizeSmall]: size === 'small',
     [css.sizeDefault]: size === 'default',

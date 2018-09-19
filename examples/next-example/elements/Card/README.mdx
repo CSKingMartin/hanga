@@ -1,0 +1,45 @@
+import { Specimen, PropTable, Presets, Editor } from 'hanga'
+import Card from './Card.jsx'
+
+# Card
+
+Cards are cool.
+
+## Examples
+
+<Presets
+  defaultProps={{
+    children: 'Commodo fugiat nulla sit officia'
+  }}
+>
+  <Presets.Option
+    name="Basic Card"
+    props={{
+      children: 'This is a basic card'
+    }}
+  />
+</Presets>
+
+<Specimen
+  Head={() => <link rel="stylesheet" href="/_next/static/style.css" />}
+  quickEditors={{
+    text: 'lorem',
+    toggle: false,
+    select: ['yes', 'no']
+  }}
+>
+  {
+    ({ children }) =>
+      <Card>
+        {children}
+      </Card>
+  }
+</Specimen>
+
+<PropTable>
+  <PropTable.Row
+    name="children"
+    description="Inner content of the card"
+    defaultValue="Sint dolore adipisicing cupidatat ipsum aliqua cillum ullamco cupidatat."
+  />
+</PropTable>

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import * as Editor from '../Editor/'
+import Editor from '../Editor/'
 
 const Enum = ({ options }) =>
   options.join(' | ')
@@ -11,17 +11,13 @@ const Row = ({
   options,
   defaultValue
 }) => {
-  let type, editor
+  let type = 'string'
+  const editor = <Editor hideLabel name={name} options={options} defaultValue={defaultValue} />
 
   if (options !== undefined) {
     type = <Enum options={options} />
-    editor = <Editor.Select hideLabel name={name} options={options} defaultValue={defaultValue} />
   } else if (typeof defaultValue === 'boolean') {
     type = 'boolean'
-    editor = <Editor.Toggle hideLabel name={name} defaultValue={defaultValue} />
-  } else {
-    type = 'string'
-    editor = <Editor.Text hideLabel name={name} defaultValue={defaultValue} />
   }
 
   return (

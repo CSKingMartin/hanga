@@ -1,0 +1,7 @@
+.root {
+  display: block;
+  padding: 2em;
+  background-color: white;
+  border-radius: 0.5em;
+  box-shadow: rgba(0,0,0,0.1) 0 2px 1em;
+}

@@ -34,8 +34,6 @@ class ToggleEditor extends React.Component {
 
   handleChange (ev) {
     const { name, context } = this.props
-
-    console.log({ name, value: ev.target.value })
     context.setContextState({ [name]: ev.target.value === 'true' })
   }
 

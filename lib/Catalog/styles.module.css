@@ -59,6 +59,11 @@
     text-transform: uppercase;
   }
 
+  [data-specimen] {
+    margin-top: 1.6em;
+    margin-bottom: 1.6em;
+  }
+
   [data-editor-select],
   [data-specimen] {
     width: 100%;

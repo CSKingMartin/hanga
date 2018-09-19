@@ -15,7 +15,7 @@ class TextEditor extends React.Component {
       caretPosition: 0
     }
 
-    this.isTextArea = props.multiline || props.defaultValue.length > 60
+    this.isTextArea = props.multiline || props.defaultValue.length > 40
     this.$input = React.createRef()
     this.handleObservableChange = this.handleObservableChange.bind(this)
     this.handleChange = this.handleChange.bind(this)

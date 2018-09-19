@@ -20,7 +20,9 @@ const plugins = [
   resolve({
     extensions: ['.js', '.jsx']
   }),
-  commonjs()
+  commonjs({
+    include: 'node_modules/**'
+  })
 ]
 
 const createOutput = config => [

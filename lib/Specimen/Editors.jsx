@@ -10,7 +10,6 @@ const Editors = ({ children }) => {
   )
 }
 
-
 Editors.propTypes = {
   children: PropTypes.any
 }
