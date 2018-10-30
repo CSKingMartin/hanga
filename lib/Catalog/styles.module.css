@@ -104,7 +104,7 @@
 
 .nav {
   background-color: white;
-  border: 1px solid #5e5e5e;
+  border-right: 1px solid #5e5e5e;
   height: 100vh;
   position: fixed;
   top: 4rem;
