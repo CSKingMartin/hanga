@@ -7,7 +7,7 @@ import archive from '../elements/'
 
 // Catalog nav + viewer
 const catalogApp = ({ router }) =>
-  <Catalog
+  <Catalog.Catalog
     // required:
     archive={archive}
     findActiveEntry={entry => entry.id === router.query.selectedId}

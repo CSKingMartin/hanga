@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import Header from './Header'
 
 import css from './styles.module.css'
 
@@ -12,7 +13,7 @@ const Layout = (props) => {
 
   return (
     <div className={css.layout}>
-      <div className={css.layoutNavigation}><Navigation {...props} /></div>
+      <Header navigation={<Navigation {...props} />} />
       <div className={css.layoutViewer}><Viewer {...props}>{activeComponent}</Viewer></div>
     </div>
   )

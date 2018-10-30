@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import StatefulContext from 'react-stateful-context'
 
+import Header from './Header'
 import Layout from './Layout'
 import ItemLink from './ItemLink'
 import Navigation from './Navigation'
@@ -39,6 +40,7 @@ Catalog.propTypes = {
   findActiveComponent: PropTypes.func,
 
   // Elements
+  Header: PropTypes.func,
   ItemLink: PropTypes.func,
   Navigation: PropTypes.func,
   Viewer: PropTypes.func,
@@ -53,6 +55,7 @@ Catalog.defaultProps = {
   ),
 
   // Components
+  Header,
   ItemLink,
   Navigation,
   Viewer,
