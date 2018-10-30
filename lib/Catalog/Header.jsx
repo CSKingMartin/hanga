@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// import hamburger from './assets/menu.svg'
-// import close from './assets/close.svg'
 import css from './styles.module.css'
 
 class Header extends React.Component {
@@ -17,7 +15,6 @@ class Header extends React.Component {
   }
 
   handleClick () {
-    console.log('hi mom')
     this.setState({ open: !this.state.open })
   }
 
@@ -29,7 +26,10 @@ class Header extends React.Component {
     return (
       <div className={css.shell}>
         {/* overtake */}
-        <div className={css.overtake} />
+        <div
+          className={this.state.open ? [css.overtakeActive, css.overtake].join(' ') : css.overtake}
+          onClick={this.handleClick}
+        />
         {/* header */}
         <div className={css.header}>
           <button className={css.hamburger} onClick={this.handleClick}>
@@ -39,7 +39,7 @@ class Header extends React.Component {
           </button>
         </div>
         {/* navigation */}
-        <div className={this.state.open ? [css.navOpen, css.nav].join(' ') : [css.navClosed, css.nav].join(' ')}>
+        <div className={this.state.open ? [css.navOpen, css.nav].join(' ') : css.nav}>
           {navigation}
         </div>
       </div>
@@ -48,7 +48,10 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  navigation: PropTypes.func
+  navigation: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.func
+  ])
 }
 
 export default Header

@@ -79,9 +79,16 @@
 
 .overtake {
   position: fixed;
-  height: 100vh;
+  height: calc(100vh - 4rem);
+  top: 4rem;
+  transition: background-color 0.25s;
   width: 100vw;
   z-index: -1;
+}
+
+.overtakeActive {
+  background-color: #ededed80;
+  z-index: 15;
 }
 
 .shell + * {
@@ -108,22 +115,20 @@
   height: 100vh;
   position: fixed;
   top: 4rem;
+  transform: translateX(-12rem);
   transition: transform 0.25s;
   width: 12rem;
-  z-index: 15;
+  z-index: 20;
 }
 
 .navOpen {
   transform: translateX(0);
 }
 
-.navClosed {
-  transform: translateX(-12rem);
-}
-
 .hamburger {
   background-color: transparent;
   border: none;
+  cursor: pointer;
   height: 3rem;
   margin: 0.5rem 1.5rem 0.5rem 0.5rem;
   width: 3rem;
